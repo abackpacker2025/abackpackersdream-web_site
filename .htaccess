@@ -1,0 +1,12 @@
+# Static legal pages. Each URL below is a directory with index.html,
+# so Apache serves it without this file. These rules only add a
+# trailing slash when someone requests the path without one.
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^privacy-policy$ /privacy-policy/ [R=301,L]
+RewriteRule ^terms$ /terms/ [R=301,L]
+RewriteRule ^privacy-policy/(backpacker|employer)$ /privacy-policy/$1/ [R=301,L]
+RewriteRule ^terms-condition/(backpacker|employer)$ /terms-condition/$1/ [R=301,L]
+</IfModule>

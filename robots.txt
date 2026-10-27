@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abackpackersdream.com.au/sitemap.xml
