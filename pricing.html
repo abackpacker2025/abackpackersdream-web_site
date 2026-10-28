@@ -234,22 +234,10 @@
   @media (max-width:560px){ footer.site-footer .footer-top{grid-template-columns:1fr;} }
 
   /* Coming soon sits after the shared palette, which repaints every feature icon.
-     Paid-plan buttons are labels: they do not start checkout. */
+     Only the multi-location rows still use it. */
   .plan-features li.soon svg{color:var(--muted);}
   .plan.featured .plan-features li.soon svg{color:var(--on-stage-muted);}
   .plan.featured .plan-features li.soon .feat-name{color:var(--on-stage-muted);}
-  .plan .btn-plan.is-soon,
-  .plan.featured .btn-plan.is-soon{
-    background:transparent;
-    border:1px dashed var(--line);
-    color:var(--muted);
-    cursor:default;
-    opacity:1;
-  }
-  .plan.featured .btn-plan.is-soon{color:var(--on-stage-muted); border-color:rgba(245,239,227,0.35);}
-  .plan .btn-plan.is-soon:disabled,
-  .plan.featured .btn-plan.is-soon:disabled{opacity:1; -webkit-text-fill-color:currentColor;}
-  .plan .btn-plan.is-soon:active{transform:none;}
   .pay strong{color:var(--accent); font-weight:700;}
   .soon-tag{display:inline-flex; align-items:center; font-size:12px; font-weight:700; color:var(--accent); background:var(--accent-soft); border-radius:999px; padding:3px 8px; line-height:1.2; white-space:nowrap;}
   .feat-note{display:block; margin-top:3px; font-size:13px; font-weight:400; color:var(--muted); line-height:1.4;}
@@ -309,7 +297,7 @@
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Applicant inbox</span><span class="feat-sub">Every application in one place, no missed calls</span></span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">No photos</span><span class="feat-sub">Upgrade to Basic to add photos and get noticed first</span></span></li>
           </ul>
-          <a class="btn btn-plan" href="#get-app">Get started</a>
+          <a class="btn btn-plan js-app-cta" href="#get-app" aria-label="Free plan, get started">Get started</a>
         </article>
 
         <article class="plan">
@@ -322,7 +310,7 @@
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Unlimited posts, 1 location</span><span class="feat-sub">Post every shift you need, never pay per listing</span></span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Listing photos</span><span class="feat-sub">The first thing a backpacker checks before applying</span></span></li>
           </ul>
-          <button type="button" class="btn btn-plan is-soon" disabled aria-label="Basic plan, coming soon">Coming soon</button>
+          <a class="btn btn-plan js-app-cta" href="#get-app" aria-label="Basic plan, get started">Start Basic</a>
         </article>
 
         <article class="plan featured">
@@ -336,7 +324,7 @@
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">1 promo push a month</span><span class="feat-sub">Puts your listing straight in front of backpackers' phones</span></span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Talent pool</span><span class="feat-sub">Re-invite applicants who've worked for you before and fill shifts fast with people you trust</span></span></li>
           </ul>
-          <button type="button" class="btn btn-plan is-soon" disabled aria-label="Growth plan, coming soon">Coming soon</button>
+          <a class="btn btn-plan js-app-cta" href="#get-app" aria-label="Growth plan, get started">Start Growth</a>
         </article>
 
         <article class="plan">
@@ -351,7 +339,7 @@
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Daily promo push</span><span class="feat-sub">Visibility every day, not just once a month</span></span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Priority support</span><span class="feat-sub">Skip the queue when something needs fixing fast</span></span></li>
           </ul>
-          <button type="button" class="btn btn-plan is-soon" disabled aria-label="Pro plan, coming soon">Coming soon</button>
+          <a class="btn btn-plan js-app-cta" href="#get-app" aria-label="Pro plan, get started">Start Pro</a>
         </article>
 
         <article class="plan anchor">
@@ -365,7 +353,7 @@
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Dedicated account manager</span><span class="feat-sub">One person who knows your account, not a ticket queue</span></span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Team logins &amp; custom integrations</span><span class="feat-sub">Separate logins for your team, built to connect with what you already use</span></span></li>
           </ul>
-          <a class="btn btn-plan" href="mailto:admin@abackpackersdream.com.au?subject=Head%20Office%20plan%20enquiry">Contact sales</a>
+          <a class="btn btn-plan" href="mailto:admin@abackpackersdream.com.au?subject=Head%20Office%20plan%20enquiry" aria-label="Head Office plan, contact sales">Contact sales</a>
         </article>
 
       </div>
