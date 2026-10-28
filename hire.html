@@ -43,6 +43,8 @@
 
   *{box-sizing:border-box;}
   html,body{overflow-x:hidden;}
+  /* clip, not hidden: hidden turns body into a scroll box and breaks the sticky header */
+  @supports (overflow:clip){ html,body{overflow-x:clip;} }
   body{background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased;}
   ::selection{background:var(--accent-fill); color:var(--on-accent);}
   img{max-width:100%; display:block;}
