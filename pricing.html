@@ -121,6 +121,8 @@
   .plan-price .per{font-size:15px; color:var(--muted); font-weight:500;}
   .plan.featured .plan-price .per{color:var(--on-stage-muted);}
   .plan-price.swapping .amt{filter:blur(3px); opacity:0.6;}
+  .plan-price a.amt{color:var(--ink); text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px; text-decoration-color:var(--accent);}
+  .plan-price a.amt:hover{color:var(--accent);}
   .plan-sub{font-size:13px; color:var(--muted); margin:6px 0 20px; min-height:1.3em;}
   .plan.featured .plan-sub{color:var(--on-stage-muted);}
   .plan-features{list-style:none; margin:0 0 22px; padding:18px 0 0; border-top:1px solid var(--line); display:grid; gap:14px; flex:1; align-content:start;}
@@ -300,8 +302,8 @@
         <article class="plan">
           <div class="plan-top"><h2 class="plan-name">Basic</h2></div>
           <p class="plan-desc">For a single venue that hires regularly.</p>
-          <div class="plan-price" id="price-basic" data-monthly="49" data-annual-month="41"><span class="amt num">$49</span><span class="per">/mo</span></div>
-          <div class="plan-sub num" id="sub-basic" data-sub-monthly="Billed monthly" data-sub-annual="$490 billed yearly">Billed monthly</div>
+          <div class="plan-price" id="price-basic" data-monthly="29" data-annual-month="24"><span class="amt num">$29</span><span class="per">/mo</span></div>
+          <div class="plan-sub num" id="sub-basic" data-sub-monthly="Billed monthly" data-sub-annual="$290 billed yearly">Billed monthly</div>
           <ul class="plan-features">
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span class="feat-name">Everything in Free</span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Unlimited posts, 1 location</span><span class="feat-sub">Post every shift you need, never pay per listing</span></span></li>
@@ -313,8 +315,8 @@
         <article class="plan featured">
           <div class="plan-top"><h2 class="plan-name">Growth</h2><span class="chip popular">Most popular</span></div>
           <p class="plan-desc">For operators with a couple of sites.</p>
-          <div class="plan-price" id="price-growth" data-monthly="129" data-annual-month="108"><span class="amt num">$129</span><span class="per">/mo</span></div>
-          <div class="plan-sub num" id="sub-growth" data-sub-monthly="Billed monthly" data-sub-annual="$1,290 billed yearly">Billed monthly</div>
+          <div class="plan-price" id="price-growth" data-monthly="69" data-annual-month="58"><span class="amt num">$69</span><span class="per">/mo</span></div>
+          <div class="plan-sub num" id="sub-growth" data-sub-monthly="Billed monthly" data-sub-annual="$690 billed yearly">Billed monthly</div>
           <ul class="plan-features">
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span class="feat-name">Everything in Basic</span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Search boost</span><span class="feat-sub">Rank higher when backpackers search nearby, not just newest first</span></span></li>
@@ -327,8 +329,8 @@
         <article class="plan">
           <div class="plan-top"><h2 class="plan-name">Pro</h2></div>
           <p class="plan-desc">For operators running several locations.</p>
-          <div class="plan-price" id="price-pro" data-monthly="399" data-annual-month="333"><span class="amt num">$399</span><span class="per">/mo</span></div>
-          <div class="plan-sub num" id="sub-pro" data-sub-monthly="Billed monthly" data-sub-annual="$3,990 billed yearly">Billed monthly</div>
+          <div class="plan-price" id="price-pro" data-monthly="199" data-annual-month="166"><span class="amt num">$199</span><span class="per">/mo</span></div>
+          <div class="plan-sub num" id="sub-pro" data-sub-monthly="Billed monthly" data-sub-annual="$1,990 billed yearly">Billed monthly</div>
           <ul class="plan-features">
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span class="feat-name">Everything in Growth</span></li>
             <li class="soon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg><span><span class="feat-name">Up to 10 locations</span><span class="feat-sub">Coming soon</span><span class="feat-note">Run every site from one login, one dashboard</span></span></li>
@@ -342,8 +344,8 @@
         <article class="plan anchor">
           <div class="plan-top"><h2 class="plan-name">Head Office</h2><span class="chip scope">Custom scope</span></div>
           <p class="plan-desc">For national chains, labour-hire firms &amp; large events.</p>
-          <div class="plan-price"><span class="amt num">$10,000</span><span class="per">/mo</span></div>
-          <div class="plan-sub num">From $999/mo, scoped to your size</div>
+          <div class="plan-price"><a class="amt" href="mailto:admin@abackpackersdream.com.au?subject=Head%20Office%20plan%20enquiry" aria-label="Contact us about the Head Office plan by email">Contact us</a></div>
+          <div class="plan-sub">Custom quote, invoiced to your business</div>
           <ul class="plan-features">
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span class="feat-name">Everything in Pro</span></li>
             <li class="soon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg><span><span class="feat-name">Unlimited locations</span><span class="feat-sub">Coming soon</span><span class="feat-note">However many sites you run, nationally</span></span></li>
@@ -370,7 +372,7 @@
           <span class="method"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10M19 21V10M9 21v-7M15 21v-7M2 10l10-7 10 7z"/></svg>Direct debit</span>
           <span class="method"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Invoice</span>
         </div>
-        <p class="footnote">Head Office is quoted per account; $10,000/mo reflects our largest accounts, not a fixed price.</p>
+        <p class="footnote">Head Office is quoted per account and paid by invoice. Contact us for a quote.</p>
       </div>
     </div>
   </section>
