@@ -43,6 +43,8 @@
 
   *{box-sizing:border-box;}
   html,body{overflow-x:hidden;}
+  /* clip, not hidden: hidden turns body into a scroll box and breaks the sticky header */
+  @supports (overflow:clip){ html,body{overflow-x:clip;} }
   body{background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased;}
   ::selection{background:var(--accent-fill); color:var(--on-accent);}
   img{max-width:100%; display:block;}
@@ -91,6 +93,9 @@
   .hero h1 .warm{color:var(--accent);}
   .lede{font-size:clamp(1.05rem,1.4vw,1.2rem); color:var(--muted); max-width:46ch;}
   .hero-ctas{display:flex; flex-wrap:wrap; gap:12px;}
+  .hero-app{margin:0; font-size:14px;}
+  .hero-app a{color:var(--muted); text-decoration:underline; text-underline-offset:3px;}
+  .hero-app a:hover{color:var(--ink);}
   .made-for{display:flex; flex-wrap:wrap; gap:8px 18px; font-size:14px; color:var(--muted); padding-top:8px; border-top:1px solid var(--line);}
   .made-for span{display:inline-flex; align-items:center; gap:7px;}
   .made-for span::before{content:""; width:6px; height:6px; border-radius:3px; background:var(--accent-fill);}
@@ -253,9 +258,12 @@
   header.site-nav nav.links{display:flex; gap:26px; font-size:0.9rem; font-weight:500; color:var(--muted);}
   header.site-nav nav.links a:hover{color:var(--ink);}
   header.site-nav nav.links a[aria-current="page"]{color:var(--ink); font-weight:600; box-shadow:inset 0 -2px 0 var(--accent-fill);}
+  header.site-nav .nav-actions{display:flex; align-items:center; gap:8px; flex-shrink:0;}
+  header.site-nav .nav-login{font-size:0.9rem; font-weight:600; color:var(--ink); padding:8px 10px; border-radius:999px;}
+  header.site-nav .nav-login:hover{color:var(--accent);}
   header.site-nav .btn{min-height:42px; padding:0 18px; font-size:0.88rem; background:var(--accent-fill); color:var(--on-accent);}
   @media (max-width:860px){ header.site-nav nav.links{display:none;} }
-  @media (max-width:520px){ header.site-nav .brand .name{display:none;} header.site-nav .btn{padding:0 14px; font-size:0.8rem;} }
+  @media (max-width:520px){ header.site-nav .brand .name{display:none;} header.site-nav .btn{padding:0 14px; font-size:0.8rem;} header.site-nav .nav-login{padding:8px 6px; font-size:0.82rem;} }
 
   footer.site-footer{background:var(--footer-bg); color:#dfe3d8; padding:64px 0 32px; margin-top:clamp(40px,6vw,80px); position:relative;}
   footer.site-footer .wrap{display:block; padding-block:0;}
@@ -289,13 +297,17 @@
       <a href="./#path">The Journey</a>
       <a href="hire.html" aria-current="page">Backpacker Hire</a>
       <a href="pricing.html">Pricing</a>
+      <a class="js-app-cta" href="#get-app">Get the app</a>
     </nav>
-    <a class="btn js-app-cta" href="#get-app">Download Backpacker Hire</a>
+    <div class="nav-actions">
+      <a class="nav-login" href="https://api.abackpackersdream.com.au/business/login">Log in</a>
+      <a class="btn" href="https://api.abackpackersdream.com.au/business/signup">Sign up</a>
+    </div>
   </div>
 </header>
 
 <main>
-  <section class="hero">
+  <section class="hero" id="hiring" aria-labelledby="hiring-title">
     <div class="wrap">
       <div class="hero-copy">
         <a class="back-link" href="./">
@@ -303,16 +315,18 @@
           <img src="img/logo.png" alt="" style="width:18px;height:18px;border-radius:50%;object-fit:cover;"/>
           Backpacker
         </a>
-        <p class="eyebrow-kicker">For employers</p>
-        <h1>Run your hiring <span class="warm">from your pocket.</span></h1>
+        <p class="eyebrow-kicker">I'm hiring</p>
+        <h1 id="hiring-title">Run your hiring <span class="warm">from your pocket.</span></h1>
         <p class="lede">Backpacker Hire is the business side of A Backpacker's Dream. Post a job, see who's keen, add photos to stand out, and promote your happy hours, events and meetups straight onto backpackers' calendars.</p>
         <div class="hero-ctas">
-          <a class="btn btn-lg btn-ink" href="pricing.html">
-            Start hiring, see plans
+          <a class="btn btn-lg btn-ink" href="https://api.abackpackersdream.com.au/business/signup">
+            Sign up
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn-lg btn-line" href="#get-app">I have an account, get the app</a>
+          <a class="btn btn-lg btn-line" href="https://api.abackpackersdream.com.au/business/login">Log in</a>
+          <a class="btn btn-lg btn-line" href="pricing.html">See plans</a>
         </div>
+        <p class="hero-app"><a href="#get-app">Or download the Backpacker Hire app</a></p>
         <div class="made-for" aria-label="Made for">
           <span>Farms</span><span>Hostels</span><span>Cafés</span><span>Bars</span><span>Tour operators</span>
         </div>
@@ -747,7 +761,7 @@
       </div>
       <div class="footer-col">
         <h4><img src="img/backpacker-hire-icon.png" alt="" aria-hidden="true" />Backpacker Hire</h4>
-        <ul><li><a href="hire.html">Post a job</a></li><li><a href="hire.html">List accommodation</a></li><li><a href="hire.html">Promote an event</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-condition/employer">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-backpacker-hire-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
+        <ul><li><a href="https://api.abackpackersdream.com.au/business/login">Log in</a></li><li><a href="https://api.abackpackersdream.com.au/business/signup">Sign up</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="hire.html">Post a job</a></li><li><a href="hire.html">List accommodation</a></li><li><a href="hire.html">Promote an event</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-condition/employer">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-backpacker-hire-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>

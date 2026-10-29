@@ -40,6 +40,8 @@
 
   *{box-sizing:border-box;}
   html,body{overflow-x:hidden;}
+  /* clip, not hidden: hidden turns body into a scroll box and breaks the sticky header */
+  @supports (overflow:clip){ html,body{overflow-x:clip;} }
   body{background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased;}
   ::selection{background:var(--accent-fill); color:var(--on-accent);}
   img,svg{max-width:100%; display:block;}
@@ -210,9 +212,12 @@
   header.site-nav nav.links{display:flex; gap:26px; font-size:0.9rem; font-weight:500; color:var(--muted);}
   header.site-nav nav.links a:hover{color:var(--ink);}
   header.site-nav nav.links a[aria-current="page"]{color:var(--ink); font-weight:600; box-shadow:inset 0 -2px 0 var(--accent-fill);}
+  header.site-nav .nav-actions{display:flex; align-items:center; gap:8px; flex-shrink:0;}
+  header.site-nav .nav-login{font-size:0.9rem; font-weight:600; color:var(--ink); padding:8px 10px; border-radius:999px;}
+  header.site-nav .nav-login:hover{color:var(--accent);}
   header.site-nav .btn{min-height:42px; padding:0 18px; font-size:0.88rem; background:var(--accent-fill); color:var(--on-accent);}
   @media (max-width:860px){ header.site-nav nav.links{display:none;} }
-  @media (max-width:520px){ header.site-nav .brand .name{display:none;} header.site-nav .btn{padding:0 14px; font-size:0.8rem;} }
+  @media (max-width:520px){ header.site-nav .brand .name{display:none;} header.site-nav .btn{padding:0 14px; font-size:0.8rem;} header.site-nav .nav-login{padding:8px 6px; font-size:0.82rem;} }
 
   footer.site-footer{background:var(--footer-bg); color:#dfe3d8; padding:64px 0 32px; margin-top:clamp(40px,6vw,80px); position:relative;}
   footer.site-footer .wrap{display:block; padding-block:0;}
@@ -254,8 +259,12 @@
       <a href="./#path">The Journey</a>
       <a href="hire.html">Backpacker Hire</a>
       <a href="pricing.html" aria-current="page">Pricing</a>
+      <a class="js-app-cta" href="#get-app">Get the app</a>
     </nav>
-    <a class="btn js-app-cta" href="#get-app">Download Backpacker Hire</a>
+    <div class="nav-actions">
+      <a class="nav-login" href="https://api.abackpackersdream.com.au/business/login">Log in</a>
+      <a class="btn" href="https://api.abackpackersdream.com.au/business/signup">Sign up</a>
+    </div>
   </div>
 </header>
 
@@ -268,7 +277,7 @@
           Backpacker Hire
         </a>
         <h1>Pick a plan, <span class="warm">get seen.</span></h1>
-        <p class="lede">Every business can post for free. Paid plans add a photo gallery, visibility, and dedicated support at the top end.</p>
+        <p class="lede">Every business can post for free. Paid plans add a photo gallery, visibility, and dedicated support at the top end. Prices in AUD, ex GST.</p>
       </div>
       <div class="head-side">
         <div class="billing-toggle" id="billingToggle" role="group" aria-label="Billing period">
@@ -289,48 +298,48 @@
           <div class="plan-top"><h2 class="plan-name">Free</h2></div>
           <p class="plan-desc">Get listed and start posting. No card required.</p>
           <div class="plan-price"><span class="amt num">$0</span><span class="per">/mo</span></div>
-          <div class="plan-sub">&nbsp;</div>
+          <div class="plan-sub">ex GST</div>
           <ul class="plan-features">
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Business profile &amp; listing</span><span class="feat-sub">Shows up when backpackers search your region</span></span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">2 live job posts</span><span class="feat-sub">Test the waters before committing to a plan</span></span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Applicant inbox</span><span class="feat-sub">Every application in one place, no missed calls</span></span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">1 cover photo</span><span class="feat-sub">Every listing gets a cover photo, free</span></span></li>
           </ul>
-          <a class="btn btn-plan js-app-cta" href="#get-app" aria-label="Free plan, get started">Get started</a>
+          <a class="btn btn-plan" href="https://api.abackpackersdream.com.au/business/signup" aria-label="Free plan, sign up">Get started</a>
         </article>
 
         <article class="plan">
           <div class="plan-top"><h2 class="plan-name">Basic</h2></div>
           <p class="plan-desc">For a single venue that hires regularly.</p>
           <div class="plan-price" id="price-basic" data-monthly="29" data-annual-month="24"><span class="amt num">$29</span><span class="per">/mo</span></div>
-          <div class="plan-sub num" id="sub-basic" data-sub-monthly="Billed monthly" data-sub-annual="$290 billed yearly">Billed monthly</div>
+          <div class="plan-sub num" id="sub-basic" data-sub-monthly="Billed monthly, ex GST" data-sub-annual="$290 billed yearly, ex GST">Billed monthly, ex GST</div>
           <ul class="plan-features">
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span class="feat-name">Everything in Free</span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Unlimited posts, 1 location</span><span class="feat-sub">Post every shift you need, never pay per listing</span></span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Photo gallery</span><span class="feat-sub">Extra photos, and a gallery on your profile</span></span></li>
           </ul>
-          <a class="btn btn-plan js-app-cta" href="#get-app" aria-label="Basic plan, get started">Start Basic</a>
+          <a class="btn btn-plan" data-plan="basic" href="https://api.abackpackersdream.com.au/business/signup?plan=basic&amp;interval=monthly" aria-label="Basic plan, sign up, billed monthly">Start Basic</a>
         </article>
 
         <article class="plan featured">
           <div class="plan-top"><h2 class="plan-name">Growth</h2><span class="chip popular">Most popular</span></div>
           <p class="plan-desc">For operators with a couple of sites.</p>
           <div class="plan-price" id="price-growth" data-monthly="69" data-annual-month="58"><span class="amt num">$69</span><span class="per">/mo</span></div>
-          <div class="plan-sub num" id="sub-growth" data-sub-monthly="Billed monthly" data-sub-annual="$690 billed yearly">Billed monthly</div>
+          <div class="plan-sub num" id="sub-growth" data-sub-monthly="Billed monthly, ex GST" data-sub-annual="$690 billed yearly, ex GST">Billed monthly, ex GST</div>
           <ul class="plan-features">
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span class="feat-name">Everything in Basic</span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Search boost</span><span class="feat-sub">Rank higher when backpackers search nearby, not just newest first</span></span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">1 promo push a month</span><span class="feat-sub">Puts your listing straight in front of backpackers' phones</span></span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Talent pool</span><span class="feat-sub">Re-invite applicants who've worked for you before and fill shifts fast with people you trust</span></span></li>
           </ul>
-          <a class="btn btn-plan js-app-cta" href="#get-app" aria-label="Growth plan, get started">Start Growth</a>
+          <a class="btn btn-plan" data-plan="growth" href="https://api.abackpackersdream.com.au/business/signup?plan=growth&amp;interval=monthly" aria-label="Growth plan, sign up, billed monthly">Start Growth</a>
         </article>
 
         <article class="plan">
           <div class="plan-top"><h2 class="plan-name">Pro</h2></div>
           <p class="plan-desc">For operators running several locations.</p>
           <div class="plan-price" id="price-pro" data-monthly="199" data-annual-month="166"><span class="amt num">$199</span><span class="per">/mo</span></div>
-          <div class="plan-sub num" id="sub-pro" data-sub-monthly="Billed monthly" data-sub-annual="$1,990 billed yearly">Billed monthly</div>
+          <div class="plan-sub num" id="sub-pro" data-sub-monthly="Billed monthly, ex GST" data-sub-annual="$1,990 billed yearly, ex GST">Billed monthly, ex GST</div>
           <ul class="plan-features">
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span class="feat-name">Everything in Growth</span></li>
             <li class="soon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg><span><span class="feat-name">Up to 10 locations</span><span class="feat-sub">Coming soon</span><span class="feat-note">Run every site from one login, one dashboard</span></span></li>
@@ -338,7 +347,7 @@
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Daily promo push</span><span class="feat-sub">Visibility every day, not just once a month</span></span></li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg><span><span class="feat-name">Priority support</span><span class="feat-sub">Skip the queue when something needs fixing fast</span></span></li>
           </ul>
-          <a class="btn btn-plan js-app-cta" href="#get-app" aria-label="Pro plan, get started">Start Pro</a>
+          <a class="btn btn-plan" data-plan="pro" href="https://api.abackpackersdream.com.au/business/signup?plan=pro&amp;interval=monthly" aria-label="Pro plan, sign up, billed monthly">Start Pro</a>
         </article>
 
         <article class="plan anchor">
@@ -372,7 +381,7 @@
           <span class="method"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10M19 21V10M9 21v-7M15 21v-7M2 10l10-7 10 7z"/></svg>Direct debit</span>
           <span class="method"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Invoice</span>
         </div>
-        <p class="footnote">Head Office is quoted per account and paid by invoice. Contact us for a quote.</p>
+        <p class="footnote">All prices are in Australian dollars and exclude GST. A yearly plan is ten times the monthly price (two months free) and is billed once a year. Head Office is quoted per account and paid by invoice.</p>
       </div>
     </div>
   </section>
@@ -409,7 +418,7 @@
       </div>
       <div class="footer-col">
         <h3><img src="img/backpacker-hire-icon.png" alt="" aria-hidden="true" />Backpacker Hire</h3>
-        <ul><li><a href="hire.html">Post a job</a></li><li><a href="hire.html">List accommodation</a></li><li><a href="hire.html">Promote an event</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-condition/employer">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-backpacker-hire-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
+        <ul><li><a href="https://api.abackpackersdream.com.au/business/login">Log in</a></li><li><a href="https://api.abackpackersdream.com.au/business/signup">Sign up</a></li><li><a href="hire.html">Post a job</a></li><li><a href="hire.html">List accommodation</a></li><li><a href="hire.html">Promote an event</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-condition/employer">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-backpacker-hire-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
       </div>
       <div class="footer-col">
         <h3>Company</h3>
@@ -436,6 +445,8 @@
   var opts = toggle.querySelectorAll('.toggle-opt');
   var priceBlocks = document.querySelectorAll('.plan-price[data-monthly]');
   var subBlocks = document.querySelectorAll('.plan-sub[data-sub-monthly]');
+  var planLinks = document.querySelectorAll('a.btn-plan[data-plan]');
+  var signupBase = 'https://api.abackpackersdream.com.au/business/signup';
 
   function positionPill(btn){
     pill.style.left = btn.offsetLeft + 'px';
@@ -458,6 +469,12 @@
     });
     subBlocks.forEach(function(block){
       block.textContent = period === 'annual' ? block.getAttribute('data-sub-annual') : block.getAttribute('data-sub-monthly');
+    });
+    planLinks.forEach(function(link){
+      var plan = link.getAttribute('data-plan');
+      link.href = signupBase + '?plan=' + encodeURIComponent(plan) + '&interval=' + period;
+      var label = link.textContent.trim() + ', sign up, billed ' + (period === 'annual' ? 'yearly' : 'monthly');
+      link.setAttribute('aria-label', label);
     });
   }
   opts.forEach(function(o){
