@@ -216,8 +216,11 @@
   header.site-nav .nav-login{font-size:0.9rem; font-weight:600; color:var(--ink); padding:8px 10px; border-radius:999px;}
   header.site-nav .nav-login:hover{color:var(--accent);}
   header.site-nav .btn{min-height:42px; padding:0 18px; font-size:0.88rem; background:var(--accent-fill); color:var(--on-accent);}
+  header.site-nav .btn-outline{background:transparent; border-color:color-mix(in srgb, var(--ink) 45%, transparent); color:var(--ink);}
+  header.site-nav .btn-outline:hover{border-color:var(--ink);}
+  header.site-nav .short-label{display:none;}
   @media (max-width:860px){ header.site-nav nav.links{display:none;} }
-  @media (max-width:520px){ header.site-nav .brand .name{display:none;} header.site-nav .btn{padding:0 14px; font-size:0.8rem;} header.site-nav .nav-login{padding:8px 6px; font-size:0.82rem;} }
+  @media (max-width:520px){ header.site-nav .brand .name{display:none;} header.site-nav .btn{padding:0 14px; font-size:0.8rem;} header.site-nav .nav-login{padding:8px 6px; font-size:0.82rem;} header.site-nav .nav-actions{gap:6px;} header.site-nav .full-label{display:none;} header.site-nav .short-label{display:inline;} header.site-nav .btn svg{display:none;} }
 
   footer.site-footer{background:var(--footer-bg); color:#dfe3d8; padding:64px 0 32px; margin-top:clamp(40px,6vw,80px); position:relative;}
   footer.site-footer .wrap{display:block; padding-block:0;}
@@ -247,6 +250,13 @@
   .plan.featured .plan-features li.soon .feat-name{color:var(--on-stage-muted);}
   .feat-note{display:block; margin-top:3px; font-size:13px; font-weight:400; color:var(--muted); line-height:1.4;}
   .plan.featured .feat-note{color:var(--on-stage-muted);}
+  :root{--to-top-bg:var(--accent-fill); --to-top-fg:#ffffff; --to-top-line:rgba(255,255,255,0.2);}
+  /* back to top */
+  .to-top{position:fixed; z-index:70; right:max(20px, env(safe-area-inset-right, 0px)); bottom:max(20px, env(safe-area-inset-bottom, 0px)); width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; padding:0; cursor:pointer; background:var(--to-top-bg); color:var(--to-top-fg); border:1px solid var(--to-top-line); box-shadow:0 12px 28px -10px rgba(0,0,0,0.45); opacity:0; visibility:hidden; transform:translateY(12px); transition:opacity 220ms ease, transform 260ms cubic-bezier(.23,1,.32,1), visibility 0s linear 260ms;}
+  .to-top.show{opacity:1; visibility:visible; transform:none; transition:opacity 220ms ease, transform 260ms cubic-bezier(.23,1,.32,1), visibility 0s;}
+  .to-top:hover{filter:brightness(1.12);}
+  .to-top:active{transform:scale(0.94);}
+  @media (prefers-reduced-motion: reduce){ .to-top{transition:none;} }
 </style>
 </head>
 <body>
@@ -259,11 +269,11 @@
       <a href="./#path">The Journey</a>
       <a href="hire.html">Backpacker Hire</a>
       <a href="pricing.html" aria-current="page">Pricing</a>
-      <a class="js-app-cta" href="#get-app">Get the app</a>
     </nav>
     <div class="nav-actions">
       <a class="nav-login" href="https://api.abackpackersdream.com.au/business/login">Log in</a>
-      <a class="btn" href="https://api.abackpackersdream.com.au/business/signup">Sign up</a>
+      <a class="btn btn-outline" href="https://api.abackpackersdream.com.au/business/signup">Sign up</a>
+      <a class="btn js-app-cta" href="#get-app" aria-label="Download the Backpacker Hire app"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span class="full-label">Download app</span><span class="short-label">Get app</span></a>
     </div>
   </div>
 </header>
@@ -494,12 +504,13 @@
 
 <script>
 (function(){
-  function storeUrlFor(ua){
-    if (/iPad|iPhone|iPod/.test(ua)) return 'https://apps.apple.com/app/id6752952428';
-    if (/Android/.test(ua)) return 'https://play.google.com/store/apps/details?id=com.backpacker.hire';
-    return null;
-  }
-  var target = storeUrlFor(navigator.userAgent || '');
+  // Download buttons: App Store on iPhone/iPad, Google Play on Android.
+  // On a computer they keep pointing at the download section (#get-app), which has both stores.
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  var target = isIOS ? 'https://apps.apple.com/app/id6752952428'
+    : /Android/.test(ua) ? 'https://play.google.com/store/apps/details?id=com.backpacker.hire'
+    : null;
   if (!target) return;
   var els = document.querySelectorAll('.js-app-cta');
   for (var i = 0; i < els.length; i++) els[i].setAttribute('href', target);
@@ -537,6 +548,30 @@
       });
     });
   });
+})();
+</script>
+
+<button type="button" class="to-top" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+<script>
+(function(){
+  // Back-to-top button: shows after scrolling down, scrolls to the top on click.
+  var btn = document.querySelector('.to-top');
+  if (!btn) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ticking = false;
+  function update(){
+    var show = window.scrollY > Math.min(600, window.innerHeight * 0.8);
+    btn.classList.toggle('show', show);
+    if (!show && document.activeElement === btn){ var first = document.querySelector('header a'); if (first) first.focus(); }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  btn.addEventListener('click', function(){
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+  update();
 })();
 </script>
 </body></html>
