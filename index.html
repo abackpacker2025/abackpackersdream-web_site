@@ -14,6 +14,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="img/hero-palm-sunset-beach.jpg" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -93,7 +94,9 @@
 
   /* ---------------- hero (the nav floats directly on top of it) ---------------- */
   .hero{position:relative; min-height:100vh; min-height:100dvh; display:flex; align-items:flex-end; overflow:hidden;}
-  .hero-slides{position:absolute; inset:0; z-index:0;}
+  .hero-slides{position:absolute; inset:0; z-index:0; overflow:hidden; background:#2c4148;}
+  /* tiny blurred copy of the first photo, shown instantly while the real one downloads */
+  .hero-slides::before{content:""; position:absolute; inset:-30px; background:url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAASACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDjXi3xCRgdxOCc8Z9q3NJ00uw86IlS2zeM5RsZH51QhsJMAeaCuc4K8ZrrNMN9aRgxtAwwNwEWeg785qZScdRKKloD6NJjOKoz2G0HOK0NQ1W4uICN8RU/3AVP86xJryfzCxbkgjk5ranUm1do5a1Kmna5AnBXHFb9mSWXJJoornq/CddL4ijqQAmYgAHPWsmQ9aKK2p/CjGt8TP/Z") center/cover no-repeat; filter:blur(20px);}
   .hero-slide{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1400ms ease;}
   .hero-slide.active{opacity:1;}
   .hero-topshade{position:absolute; top:0; left:0; right:0; height:170px; z-index:2; background:linear-gradient(180deg, rgba(8,12,8,0.55) 0%, rgba(8,12,8,0) 100%); pointer-events:none;}
@@ -344,11 +347,11 @@
 
 <section class="hero" id="top" data-audience="travel">
   <div class="hero-slides">
-    <img class="hero-slide active" src="img/hero-palm-sunset-beach.jpg" alt="Palm trees framing a tropical beach at sunset with calm turquoise water" />
-    <img class="hero-slide" src="img/hero-himalaya-prayer-flags.jpg" alt="Snow-capped Himalayan peak behind prayer flags and a mountain guesthouse" />
-    <img class="hero-slide" src="img/hero-cappadocia-balloons.jpg" alt="Hot air balloons rising over the Cappadocia landscape at sunrise" />
-    <img class="hero-slide" src="img/hero-surfers-sunset-walk.jpg" alt="Two surfers walking along the beach at sunset with boards under their arms" />
-    <img class="hero-slide" src="img/hero-patagonia-hikers.jpg" alt="Hikers on a trail looking toward snow-capped Patagonian peaks" />
+    <img class="hero-slide active" src="img/hero-palm-sunset-beach.jpg" fetchpriority="high" alt="Palm trees framing a tropical beach at sunset with calm turquoise water" />
+    <img class="hero-slide" data-src="img/hero-himalaya-prayer-flags.jpg" alt="Snow-capped Himalayan peak behind prayer flags and a mountain guesthouse" />
+    <img class="hero-slide" data-src="img/hero-cappadocia-balloons.jpg" alt="Hot air balloons rising over the Cappadocia landscape at sunrise" />
+    <img class="hero-slide" data-src="img/hero-surfers-sunset-walk.jpg" alt="Two surfers walking along the beach at sunset with boards under their arms" />
+    <img class="hero-slide" data-src="img/hero-patagonia-hikers.jpg" alt="Hikers on a trail looking toward snow-capped Patagonian peaks" />
   </div>
   <div class="hero-hire-bg" aria-hidden="true"><span class="hire-sun"></span><span class="hire-band"></span></div>
   <div class="hero-topshade" aria-hidden="true"></div>
@@ -438,9 +441,9 @@
       <div class="pin-slot">
         <div class="pin-anchor" data-anchor>
           <div class="card-deck" data-deck>
-            <div class="deck-card" data-index="0"><img src="img/jobs-apple-orchard.jpg" alt="Travellers picking apples together in an orchard" /></div>
-            <div class="deck-card" data-index="1"><img src="img/jobs-strawberries.jpg" alt="Two travellers picking strawberries on a farm" /></div>
-            <div class="deck-card" data-index="2"><img src="img/jobs-barista-latte.jpg" alt="Traveller working as a barista, pouring latte art" /></div>
+            <div class="deck-card" data-index="0"><img loading="lazy" decoding="async" src="img/jobs-apple-orchard.jpg" alt="Travellers picking apples together in an orchard" /></div>
+            <div class="deck-card" data-index="1"><img loading="lazy" decoding="async" src="img/jobs-strawberries.jpg" alt="Two travellers picking strawberries on a farm" /></div>
+            <div class="deck-card" data-index="2"><img loading="lazy" decoding="async" src="img/jobs-barista-latte.jpg" alt="Traveller working as a barista, pouring latte art" /></div>
           </div>
         </div>
         <div class="stop-num">1</div>
@@ -457,9 +460,9 @@
       <div class="pin-slot">
         <div class="pin-anchor" data-anchor>
           <div class="card-deck" data-deck>
-            <div class="deck-card" data-index="0"><img src="img/accommodation-alpine-hostel.jpg" alt="Alpine hostel balcony with a HOSTEL sign and mountain views" /></div>
-            <div class="deck-card" data-index="1"><img src="img/accommodation-jungle-lounge.jpg" alt="Open-air jungle-style hostel lounge with lantern lighting over sand floor" /></div>
-            <div class="deck-card" data-index="2"><img src="img/accommodation-garden-dinner.jpg" alt="Shared house group dinner at dusk under a tree strung with lights" /></div>
+            <div class="deck-card" data-index="0"><img loading="lazy" decoding="async" src="img/accommodation-alpine-hostel.jpg" alt="Alpine hostel balcony with a HOSTEL sign and mountain views" /></div>
+            <div class="deck-card" data-index="1"><img loading="lazy" decoding="async" src="img/accommodation-jungle-lounge.jpg" alt="Open-air jungle-style hostel lounge with lantern lighting over sand floor" /></div>
+            <div class="deck-card" data-index="2"><img loading="lazy" decoding="async" src="img/accommodation-garden-dinner.jpg" alt="Shared house group dinner at dusk under a tree strung with lights" /></div>
           </div>
         </div>
         <div class="stop-num">2</div>
@@ -476,9 +479,9 @@
       <div class="pin-slot">
         <div class="pin-anchor" data-anchor>
           <div class="card-deck" data-deck>
-            <div class="deck-card" data-index="0"><img src="img/hangouts-pool-party.jpg" alt="Travellers hanging out together at a hostel pool party at night" /></div>
-            <div class="deck-card" data-index="1"><img src="img/hangouts-pub-night.jpg" alt="Travellers and locals watching the game together in a cosy pub" /></div>
-            <div class="deck-card" data-index="2"><img src="img/hangouts-sunset-dinner.jpg" alt="Friends sharing a sunset dinner with live music at a beach bar" /></div>
+            <div class="deck-card" data-index="0"><img loading="lazy" decoding="async" src="img/hangouts-pool-party.jpg" alt="Travellers hanging out together at a hostel pool party at night" /></div>
+            <div class="deck-card" data-index="1"><img loading="lazy" decoding="async" src="img/hangouts-pub-night.jpg" alt="Travellers and locals watching the game together in a cosy pub" /></div>
+            <div class="deck-card" data-index="2"><img loading="lazy" decoding="async" src="img/hangouts-sunset-dinner.jpg" alt="Friends sharing a sunset dinner with live music at a beach bar" /></div>
           </div>
         </div>
         <div class="stop-num">3</div>
@@ -495,11 +498,11 @@
       <div class="pin-slot">
         <div class="pin-anchor" data-anchor>
           <div class="card-deck" data-deck>
-            <div class="deck-card" data-index="0"><img src="img/wanderlust-map-in-car.jpg" alt="Friends planning a road trip route on a paper map in the car" /></div>
-            <div class="deck-card" data-index="1"><img src="img/wanderlust-patched-backpacks.jpg" alt="Two backpacks covered in travel patches in front of a tent" /></div>
-            <div class="deck-card" data-index="2"><img src="img/wanderlust-map-flatlay.jpg" alt="Map, camera, compass and coffee laid out on a table overlooking the coast" /></div>
-            <div class="deck-card" data-index="3"><img src="img/wanderlust-rooftop-tent-truck.jpg" alt="4x4 with a rooftop tent parked in the forest at dusk" /></div>
-            <div class="deck-card" data-index="4"><img src="img/wanderlust-jungle-campfire.jpg" alt="Friends gathered around a campfire in the jungle at dusk" /></div>
+            <div class="deck-card" data-index="0"><img loading="lazy" decoding="async" src="img/wanderlust-map-in-car.jpg" alt="Friends planning a road trip route on a paper map in the car" /></div>
+            <div class="deck-card" data-index="1"><img loading="lazy" decoding="async" src="img/wanderlust-patched-backpacks.jpg" alt="Two backpacks covered in travel patches in front of a tent" /></div>
+            <div class="deck-card" data-index="2"><img loading="lazy" decoding="async" src="img/wanderlust-map-flatlay.jpg" alt="Map, camera, compass and coffee laid out on a table overlooking the coast" /></div>
+            <div class="deck-card" data-index="3"><img loading="lazy" decoding="async" src="img/wanderlust-rooftop-tent-truck.jpg" alt="4x4 with a rooftop tent parked in the forest at dusk" /></div>
+            <div class="deck-card" data-index="4"><img loading="lazy" decoding="async" src="img/wanderlust-jungle-campfire.jpg" alt="Friends gathered around a campfire in the jungle at dusk" /></div>
           </div>
         </div>
         <div class="stop-num">4</div>
@@ -763,14 +766,22 @@
   updateNavState();
   window.addEventListener('scroll', updateNavState, { passive: true });
 
-  // hero background slideshow — crossfades through all .hero-slide images in order
+  // hero background slideshow — crossfades through all .hero-slide images in order.
+  // Only the first photo loads with the page; the others start downloading once the
+  // page has finished loading, and a slide is only shown after its photo has arrived.
   var heroSlides = Array.prototype.slice.call(document.querySelectorAll('.hero-slide'));
   if(heroSlides.length > 1 && !reduceMotion){
+    var startRest = function(){
+      heroSlides.forEach(function(img){ var src = img.getAttribute('data-src'); if(src){ img.src = src; img.removeAttribute('data-src'); } });
+    };
+    if(document.readyState === 'complete') startRest(); else window.addEventListener('load', startRest);
     var slideIdx = 0;
     setInterval(function(){
+      var next = heroSlides[(slideIdx + 1) % heroSlides.length];
+      if(!next.complete || !next.naturalWidth) return; // not downloaded yet: keep the current photo
       heroSlides[slideIdx].classList.remove('active');
       slideIdx = (slideIdx + 1) % heroSlides.length;
-      heroSlides[slideIdx].classList.add('active');
+      next.classList.add('active');
     }, 6000);
   }
 
