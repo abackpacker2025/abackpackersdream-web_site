@@ -557,6 +557,16 @@
 <script>
 (function(){
   // Back-to-top button: shows after scrolling down, scrolls to the top on click.
+  // Open at the top. A reload (and the preview, which reloads on every update) would
+  // otherwise put the visitor back where they last scrolled. Back/forward keeps its
+  // position, and links to a section (#hiring, #path...) still jump to it.
+  (function(){
+    var nav = window.performance && performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+    if ((nav && nav.type === 'back_forward') || location.hash) return;
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+    window.addEventListener('load', function(){ if (!location.hash) window.scrollTo(0, 0); });
+  })();
   var btn = document.querySelector('.to-top');
   if (!btn) return;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
