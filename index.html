@@ -115,6 +115,16 @@
   .audience-tabs button{min-height:44px; padding:0 20px; border:0; border-radius:999px; background:transparent; color:#fff; font-family:var(--font-body); font-size:0.95rem; font-weight:600; cursor:pointer; transition:background 220ms ease, color 220ms ease;}
   .audience-tabs button:hover{background:rgba(255,255,255,0.12);}
   .audience-tabs button[aria-selected="true"]{background:#fff; color:var(--ink);}
+  /* Desktop: the tabs sit just above the text and both panels share one spot,
+     so the tabs stay put when switching. Phones keep the tabs pinned under the header. */
+  @media (min-width:861px){
+    .hero-content{padding-top:120px;}
+    .audience-tabs{position:relative; top:auto; left:auto; margin:0 0 30px; padding:6px;}
+    .audience-tabs button{min-height:54px; padding:0 30px; font-size:1.05rem;}
+    .hero-panels{display:grid;}
+    .hero-panel{grid-area:1 / 1;}
+    .hero-panel[hidden]{display:block; visibility:hidden;}
+  }
   .hero-panel.is-entering{animation:panel-in 420ms cubic-bezier(.23,1,.32,1);}
   @keyframes panel-in{from{opacity:0; transform:translateY(10px);}}
   .hero-hire-kicker{display:flex; align-items:center; gap:10px; margin:0 0 22px; font-size:0.8rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#f0a27c;}
@@ -385,6 +395,7 @@
       <button type="button" role="tab" id="tab-hire" aria-controls="panel-hire" aria-selected="false" tabindex="-1">I'm hiring</button>
     </div>
 
+    <div class="hero-panels">
     <div class="hero-panel" id="panel-travel" role="tabpanel" aria-labelledby="tab-travel">
       <div class="hero-eyebrow-row">
         <span class="hero-chip">New</span>
@@ -409,6 +420,7 @@
       <p class="hero-links"><a href="hire.html">How Backpacker Hire works &rarr;</a><a href="pricing.html">Pricing</a></p>
       <p class="hero-note">One login for the website and the Backpacker Hire app.</p>
     </div>
+  </div>
   </div>
 </section>
 
