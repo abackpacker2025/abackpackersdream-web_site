@@ -5,6 +5,17 @@ DirectoryIndex index.html
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
+
+# www.abackpackersdream.com.au (http or https) -> https://abackpackersdream.com.au, one 301.
+RewriteCond %{HTTP_HOST} ^www\.abackpackersdream\.com\.au$ [NC]
+RewriteRule ^ https://abackpackersdream.com.au%{REQUEST_URI} [R=301,L]
+
+# http:// -> https://, one 301. The X-Forwarded-Proto check stops a redirect
+# loop if the host ends HTTPS at a proxy in front of Apache.
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://abackpackersdream.com.au%{REQUEST_URI} [R=301,L]
+
 RewriteRule ^privacy-policy$ /privacy-policy/ [R=301,L]
 RewriteRule ^terms$ /terms/ [R=301,L]
 RewriteRule ^privacy-policy/(backpacker|employer)$ /privacy-policy/$1/ [R=301,L]
