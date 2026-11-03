@@ -21,3 +21,32 @@ RewriteRule ^terms$ /terms/ [R=301,L]
 RewriteRule ^privacy-policy/(backpacker|employer)$ /privacy-policy/$1/ [R=301,L]
 RewriteRule ^terms-condition/(backpacker|employer)$ /terms-condition/$1/ [R=301,L]
 </IfModule>
+
+# Browser caching. Pages are checked on every visit (so edits show at once);
+# images and fonts are kept 30 days, CSS 7 days (legal.css is linked with ?v=N,
+# so a new version is fetched straight away).
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresDefault "access plus 0 seconds"
+ExpiresByType text/html "access plus 0 seconds"
+ExpiresByType text/css "access plus 7 days"
+ExpiresByType application/javascript "access plus 7 days"
+ExpiresByType image/webp "access plus 30 days"
+ExpiresByType image/jpeg "access plus 30 days"
+ExpiresByType image/png "access plus 30 days"
+ExpiresByType image/svg+xml "access plus 30 days"
+ExpiresByType image/x-icon "access plus 30 days"
+ExpiresByType font/woff2 "access plus 30 days"
+ExpiresByType application/xml "access plus 1 day"
+</IfModule>
+<IfModule mod_headers.c>
+<FilesMatch "\.html$">
+Header set Cache-Control "no-cache"
+</FilesMatch>
+<FilesMatch "\.(webp|jpe?g|png|svg|ico|woff2)$">
+Header set Cache-Control "public, max-age=2592000"
+</FilesMatch>
+</IfModule>
+<IfModule mod_mime.c>
+AddType image/webp .webp
+</IfModule>
