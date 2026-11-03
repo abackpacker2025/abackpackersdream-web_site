@@ -25,8 +25,10 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="img/hero-palm-sunset-beach.jpg" fetchpriority="high">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-palm-sunset-beach.webp" fetchpriority="high">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"></noscript>
 <style>
   :root{
     --ink:#16261b;
@@ -50,7 +52,7 @@
   *{box-sizing:border-box;}
   html{overflow-x:hidden;}
   body{margin:0; background:var(--cream); color:var(--charcoal); font-family:var(--font-body); -webkit-font-smoothing:antialiased; overflow-x:hidden;}
-  img{max-width:100%; display:block;}
+  img{max-width:100%; height:auto; display:block;}
   a{color:inherit; text-decoration:none;}
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
   h1,h2,h3{font-family:var(--font-display); margin:0;}
@@ -479,18 +481,18 @@
 
 <section class="hero" id="top" data-audience="travel">
   <div class="hero-slides">
-    <img class="hero-slide active" src="img/hero-palm-sunset-beach.jpg" fetchpriority="high" alt="Palm trees framing a tropical beach at sunset with calm turquoise water" />
-    <img class="hero-slide" data-src="img/hero-himalaya-prayer-flags.jpg" alt="Snow-capped Himalayan peak behind prayer flags and a mountain guesthouse" />
-    <img class="hero-slide" data-src="img/hero-cappadocia-balloons.jpg" alt="Hot air balloons rising over the Cappadocia landscape at sunrise" />
-    <img class="hero-slide" data-src="img/hero-surfers-sunset-walk.jpg" alt="Two surfers walking along the beach at sunset with boards under their arms" />
-    <img class="hero-slide" data-src="img/hero-patagonia-hikers.jpg" alt="Hikers on a trail looking toward snow-capped Patagonian peaks" />
+    <img width="1200" height="672" class="hero-slide active" src="img/hero-palm-sunset-beach.webp" fetchpriority="high" alt="Palm trees framing a tropical beach at sunset with calm turquoise water" />
+    <img width="1200" height="800" class="hero-slide" data-src="img/hero-himalaya-prayer-flags.webp" alt="Snow-capped Himalayan peak behind prayer flags and a mountain guesthouse" />
+    <img width="1200" height="759" class="hero-slide" data-src="img/hero-cappadocia-balloons.webp" alt="Hot air balloons rising over the Cappadocia landscape at sunrise" />
+    <img width="1600" height="898" class="hero-slide" data-src="img/hero-surfers-sunset-walk.webp" alt="Two surfers walking along the beach at sunset with boards under their arms" />
+    <img width="1600" height="1068" class="hero-slide" data-src="img/hero-patagonia-hikers.webp" alt="Hikers on a trail looking toward snow-capped Patagonian peaks" />
   </div>
   <div class="hero-hire-bg" aria-hidden="true"><span class="hire-sun"></span><span class="hire-band"></span></div>
   <div class="hero-topshade" aria-hidden="true"></div>
 
   <header class="nav">
     <div class="nav-row">
-      <div class="brand"><img class="logo-mark" src="img/logo.png" alt="A Backpacker's Dream logo" /><span class="brand-name">A Backpacker's Dream</span></div>
+      <div class="brand"><img width="192" height="220" class="logo-mark" src="img/logo.png" alt="A Backpacker's Dream logo" /><span class="brand-name">A Backpacker's Dream</span></div>
       <nav class="links">
         <a href="#path">The Journey</a>
         <a href="hire.html">Backpacker Hire</a>
@@ -532,7 +534,7 @@
     </div>
 
     <div class="hero-panel" id="panel-hire" role="tabpanel" aria-labelledby="tab-hire" hidden>
-      <p class="hero-hire-kicker"><img src="img/backpacker-hire-icon.png" alt="Backpacker Hire logo" />Backpacker Hire · for businesses</p>
+      <p class="hero-hire-kicker"><img width="156" height="155" src="img/backpacker-hire-icon.png" alt="Backpacker Hire logo" />Backpacker Hire · for businesses</p>
       <h2 class="display">Need backpackers?<br/><span class="accent-hire">We've got you.</span></h2>
       <p class="hero-sub">Post jobs, stays and events in minutes and reach backpackers already looking for work nearby. Your first 2 jobs are free.</p>
       <div class="hero-ctas">
@@ -575,9 +577,9 @@
       <div class="pin-slot">
         <div class="pin-anchor" data-anchor>
           <div class="card-deck" data-deck>
-            <div class="deck-card" data-index="0"><img loading="lazy" decoding="async" src="img/jobs-apple-orchard.jpg" alt="Travellers picking apples together in an orchard" /></div>
-            <div class="deck-card" data-index="1"><img loading="lazy" decoding="async" src="img/jobs-strawberries.jpg" alt="Two travellers picking strawberries on a farm" /></div>
-            <div class="deck-card" data-index="2"><img loading="lazy" decoding="async" src="img/jobs-barista-latte.jpg" alt="Traveller working as a barista, pouring latte art" /></div>
+            <div class="deck-card" data-index="0"><img width="720" height="959" loading="lazy" decoding="async" src="img/jobs-apple-orchard.webp" alt="Travellers picking apples together in an orchard" /></div>
+            <div class="deck-card" data-index="1"><img width="720" height="1001" loading="lazy" decoding="async" src="img/jobs-strawberries.webp" alt="Two travellers picking strawberries on a farm" /></div>
+            <div class="deck-card" data-index="2"><img width="720" height="900" loading="lazy" decoding="async" src="img/jobs-barista-latte.webp" alt="Traveller working as a barista, pouring latte art" /></div>
           </div>
         </div>
         <div class="stop-num">1</div>
@@ -594,9 +596,9 @@
       <div class="pin-slot">
         <div class="pin-anchor" data-anchor>
           <div class="card-deck" data-deck>
-            <div class="deck-card" data-index="0"><img loading="lazy" decoding="async" src="img/accommodation-alpine-hostel.jpg" alt="Alpine hostel balcony with a HOSTEL sign and mountain views" /></div>
-            <div class="deck-card" data-index="1"><img loading="lazy" decoding="async" src="img/accommodation-jungle-lounge.jpg" alt="Open-air jungle-style hostel lounge with lantern lighting over sand floor" /></div>
-            <div class="deck-card" data-index="2"><img loading="lazy" decoding="async" src="img/accommodation-garden-dinner.jpg" alt="Shared house group dinner at dusk under a tree strung with lights" /></div>
+            <div class="deck-card" data-index="0"><img width="720" height="1080" loading="lazy" decoding="async" src="img/accommodation-alpine-hostel.webp" alt="Alpine hostel balcony with a HOSTEL sign and mountain views" /></div>
+            <div class="deck-card" data-index="1"><img width="720" height="870" loading="lazy" decoding="async" src="img/accommodation-jungle-lounge.webp" alt="Open-air jungle-style hostel lounge with lantern lighting over sand floor" /></div>
+            <div class="deck-card" data-index="2"><img width="720" height="960" loading="lazy" decoding="async" src="img/accommodation-garden-dinner.webp" alt="Shared house group dinner at dusk under a tree strung with lights" /></div>
           </div>
         </div>
         <div class="stop-num">2</div>
@@ -613,9 +615,9 @@
       <div class="pin-slot">
         <div class="pin-anchor" data-anchor>
           <div class="card-deck" data-deck>
-            <div class="deck-card" data-index="0"><img loading="lazy" decoding="async" src="img/hangouts-pool-party.jpg" alt="Travellers hanging out together at a hostel pool party at night" /></div>
-            <div class="deck-card" data-index="1"><img loading="lazy" decoding="async" src="img/hangouts-pub-night.jpg" alt="Travellers and locals watching the game together in a cosy pub" /></div>
-            <div class="deck-card" data-index="2"><img loading="lazy" decoding="async" src="img/hangouts-sunset-dinner.jpg" alt="Friends sharing a sunset dinner with live music at a beach bar" /></div>
+            <div class="deck-card" data-index="0"><img width="720" height="541" loading="lazy" decoding="async" src="img/hangouts-pool-party.webp" alt="Travellers hanging out together at a hostel pool party at night" /></div>
+            <div class="deck-card" data-index="1"><img width="675" height="1200" loading="lazy" decoding="async" src="img/hangouts-pub-night.webp" alt="Travellers and locals watching the game together in a cosy pub" /></div>
+            <div class="deck-card" data-index="2"><img width="720" height="900" loading="lazy" decoding="async" src="img/hangouts-sunset-dinner.webp" alt="Friends sharing a sunset dinner with live music at a beach bar" /></div>
           </div>
         </div>
         <div class="stop-num">3</div>
@@ -632,11 +634,11 @@
       <div class="pin-slot">
         <div class="pin-anchor" data-anchor>
           <div class="card-deck" data-deck>
-            <div class="deck-card" data-index="0"><img loading="lazy" decoding="async" src="img/wanderlust-map-in-car.jpg" alt="Friends planning a road trip route on a paper map in the car" /></div>
-            <div class="deck-card" data-index="1"><img loading="lazy" decoding="async" src="img/wanderlust-patched-backpacks.jpg" alt="Two backpacks covered in travel patches in front of a tent" /></div>
-            <div class="deck-card" data-index="2"><img loading="lazy" decoding="async" src="img/wanderlust-map-flatlay.jpg" alt="Map, camera, compass and coffee laid out on a table overlooking the coast" /></div>
-            <div class="deck-card" data-index="3"><img loading="lazy" decoding="async" src="img/wanderlust-rooftop-tent-truck.jpg" alt="4x4 with a rooftop tent parked in the forest at dusk" /></div>
-            <div class="deck-card" data-index="4"><img loading="lazy" decoding="async" src="img/wanderlust-jungle-campfire.jpg" alt="Friends gathered around a campfire in the jungle at dusk" /></div>
+            <div class="deck-card" data-index="0"><img width="720" height="899" loading="lazy" decoding="async" src="img/wanderlust-map-in-car.webp" alt="Friends planning a road trip route on a paper map in the car" /></div>
+            <div class="deck-card" data-index="1"><img width="720" height="1080" loading="lazy" decoding="async" src="img/wanderlust-patched-backpacks.webp" alt="Two backpacks covered in travel patches in front of a tent" /></div>
+            <div class="deck-card" data-index="2"><img width="720" height="1073" loading="lazy" decoding="async" src="img/wanderlust-map-flatlay.webp" alt="Map, camera, compass and coffee laid out on a table overlooking the coast" /></div>
+            <div class="deck-card" data-index="3"><img width="720" height="1080" loading="lazy" decoding="async" src="img/wanderlust-rooftop-tent-truck.webp" alt="4x4 with a rooftop tent parked in the forest at dusk" /></div>
+            <div class="deck-card" data-index="4"><img width="720" height="772" loading="lazy" decoding="async" src="img/wanderlust-jungle-campfire.webp" alt="Friends gathered around a campfire in the jungle at dusk" /></div>
           </div>
         </div>
         <div class="stop-num">4</div>
@@ -699,7 +701,7 @@
   <div class="hire-card">
   <div class="hire-grid">
     <div class="hire-copy">
-      <img class="hire-logo" src="img/backpacker-hire-logo.png" alt="Backpacker Hire logo" />
+      <img width="397" height="171" class="hire-logo" src="img/backpacker-hire-logo.png" alt="Backpacker Hire logo" />
       <p class="kicker eyebrow">For Employers</p>
       <h2>Need backpackers?<br/><span class="accent-pop">We've got you.</span></h2>
       <p>Backpacker Hire connects your business with backpackers already looking for work nearby &mdash; post a job, a room, or a local event in minutes.</p>
@@ -758,7 +760,7 @@
         <ellipse cx="62" cy="58" rx="7" ry="11" fill="#e8b84b" transform="rotate(15 62 58)"/>
       </svg>
       <div class="app-card">
-        <img src="img/logo.png" alt="Backpacker app logo" />
+        <img width="192" height="220" src="img/logo.png" alt="Backpacker app logo" />
         <div>
           <p class="for">For travellers</p>
           <h3>Backpacker</h3>
@@ -770,7 +772,7 @@
         </div>
       </div>
       <div class="app-card hire">
-        <img src="img/backpacker-hire-icon.png" alt="Backpacker Hire app icon" />
+        <img width="156" height="155" src="img/backpacker-hire-icon.png" alt="Backpacker Hire app icon" />
         <div>
           <p class="for">For businesses</p>
           <h3>Backpacker Hire</h3>
@@ -835,16 +837,16 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="brand"><img class="logo-mark" src="img/logo.png" alt="A Backpacker's Dream logo" />A Backpacker's Dream</div>
-        <p>Jobs, stays, and people for every working holiday, anywhere in the world — built for backpackers, and the businesses who hire them.</p>
+        <div class="brand"><img width="192" height="220" class="logo-mark" src="img/logo.png" alt="A Backpacker's Dream logo" />A Backpacker's Dream</div>
+        <p>Jobs, stays, and people for your working holiday in Newcastle and the Hunter Valley — built for backpackers, and the businesses who hire them.</p>
       </div>
       <div class="footer-col">
         <h4>Backpacker</h4>
-        <ul><li><a href="#path">Jobs</a></li><li><a href="#path">Accommodation</a></li><li><a href="#path">Hangouts</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-condition/backpacker">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-a-backpacker-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
+        <ul><li><a href="#path">Jobs</a></li><li><a href="#path">Accommodation</a></li><li><a href="#path">Hangouts</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-condition/backpacker/">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-a-backpacker-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
       </div>
       <div class="footer-col">
-        <h4><img class="hire-icon" src="img/backpacker-hire-icon.png" alt="Backpacker Hire logo" />Backpacker Hire</h4>
-        <ul><li><a href="hire.html">I'm hiring</a></li><li><a href="https://api.abackpackersdream.com.au/business/login">Log in</a></li><li><a href="https://api.abackpackersdream.com.au/business/signup">Sign up</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="#hire">Post a job</a></li><li><a href="#hire">List accommodation</a></li><li><a href="#hire">Promote an event</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-condition/employer">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-backpacker-hire-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
+        <h4><img width="156" height="155" class="hire-icon" src="img/backpacker-hire-icon.png" alt="Backpacker Hire logo" />Backpacker Hire</h4>
+        <ul><li><a href="hire.html">I'm hiring</a></li><li><a href="https://api.abackpackersdream.com.au/business/login">Log in</a></li><li><a href="https://api.abackpackersdream.com.au/business/signup">Sign up</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="#hire">Post a job</a></li><li><a href="#hire">List accommodation</a></li><li><a href="#hire">Promote an event</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-condition/employer/">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-backpacker-hire-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>

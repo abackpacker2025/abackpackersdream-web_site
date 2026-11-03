@@ -25,7 +25,9 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"></noscript>
 <style>
   /* Layout: a sunset "stage" of real app screens opens the page, then the hiring flow
      as three alternating screen panels (post, review, get seen), one-account explainer, CTA. */
@@ -58,7 +60,7 @@
   @supports (overflow:clip){ html,body{overflow-x:clip;} }
   body{background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased;}
   ::selection{background:var(--accent-fill); color:var(--on-accent);}
-  img{max-width:100%; display:block;}
+  img{max-width:100%; height:auto; display:block;}
   a{color:inherit; text-decoration:none;}
   button{font:inherit; border:none; background:none; cursor:pointer; color:inherit;}
   :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:8px;}
@@ -354,7 +356,7 @@
 
 <header class="site-nav">
   <div class="wrap">
-    <a class="brand" href="hire.html"><img src="img/backpacker-hire-icon.png" alt="Backpacker Hire logo"/><span class="name">Backpacker Hire</span></a>
+    <a class="brand" href="hire.html"><img width="156" height="155" src="img/backpacker-hire-icon.png" alt="Backpacker Hire logo"/><span class="name">Backpacker Hire</span></a>
     <nav class="links" aria-label="Main">
       <a href="./">Home</a>
       <a href="./#path">The Journey</a>
@@ -375,7 +377,7 @@
       <div class="hero-copy">
         <a class="back-link" href="./">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
-          <img src="img/logo.png" alt="A Backpacker's Dream logo" style="width:18px;height:18px;border-radius:50%;object-fit:cover;"/>
+          <img width="192" height="220" src="img/logo.png" alt="A Backpacker's Dream logo" style="width:18px;height:18px;border-radius:50%;object-fit:cover;"/>
           Backpacker
         </a>
         <p class="eyebrow-kicker">I'm hiring</p>
@@ -815,16 +817,16 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="brand"><img src="img/logo.png" alt="A Backpacker's Dream logo" />A Backpacker's Dream</div>
-        <p>Jobs, stays, and people for every working holiday, anywhere in the world — built for backpackers, and the businesses who hire them.</p>
+        <div class="brand"><img width="192" height="220" src="img/logo.png" alt="A Backpacker's Dream logo" />A Backpacker's Dream</div>
+        <p>Jobs, stays, and people for your working holiday in Newcastle and the Hunter Valley — built for backpackers, and the businesses who hire them.</p>
       </div>
       <div class="footer-col">
         <h4>Backpacker</h4>
-        <ul><li><a href="./#path">Jobs</a></li><li><a href="./#path">Accommodation</a></li><li><a href="./#path">Hangouts</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-condition/backpacker">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-a-backpacker-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
+        <ul><li><a href="./#path">Jobs</a></li><li><a href="./#path">Accommodation</a></li><li><a href="./#path">Hangouts</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-condition/backpacker/">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-a-backpacker-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
       </div>
       <div class="footer-col">
-        <h4><img src="img/backpacker-hire-icon.png" alt="Backpacker Hire logo" />Backpacker Hire</h4>
-        <ul><li><a href="https://api.abackpackersdream.com.au/business/login">Log in</a></li><li><a href="https://api.abackpackersdream.com.au/business/signup">Sign up</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="hire.html">Post a job</a></li><li><a href="hire.html">List accommodation</a></li><li><a href="hire.html">Promote an event</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-condition/employer">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-backpacker-hire-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
+        <h4><img width="156" height="155" src="img/backpacker-hire-icon.png" alt="Backpacker Hire logo" />Backpacker Hire</h4>
+        <ul><li><a href="https://api.abackpackersdream.com.au/business/login">Log in</a></li><li><a href="https://api.abackpackersdream.com.au/business/signup">Sign up</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="hire.html">Post a job</a></li><li><a href="hire.html">List accommodation</a></li><li><a href="hire.html">Promote an event</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-condition/employer/">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-backpacker-hire-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
