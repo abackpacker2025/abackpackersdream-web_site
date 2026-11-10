@@ -1,0 +1,102 @@
+# Netlify hosting (owner, 10 Nov 2026: replaces uploading to Crazy Domains' File Manager).
+# Static site, no build: every merge to main goes live. Does what .htaccess did on Apache:
+# www -> bare domain, the trailing slash on the legal pages, and caching. Netlify makes
+# http -> https itself once the certificate is issued.
+
+[build]
+  publish = "."
+  command = ""
+
+# www.abackpackersdream.com.au -> https://abackpackersdream.com.au, one 301.
+[[redirects]]
+  from = "https://www.abackpackersdream.com.au/*"
+  to = "https://abackpackersdream.com.au/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.abackpackersdream.com.au/*"
+  to = "https://abackpackersdream.com.au/:splat"
+  status = 301
+  force = true
+
+# The legal pages are folders; add the trailing slash in one 301 (as .htaccess did).
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/privacy-policy/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy-policy/:role"
+  to = "/privacy-policy/:role/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terms-condition/:role"
+  to = "/terms-condition/:role/"
+  status = 301
+  force = true
+
+# Repo files that aren't part of the site: not served.
+[[redirects]]
+  from = "/CLAUDE.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/.htaccess"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify.toml"
+  to = "/"
+  status = 404
+  force = true
+
+# Caching, as .htaccess: images kept 30 days; CSS and JS 7 days (legal.css is linked with ?v=N); sitemap 1 day.
+# Pages: Netlify's own default (browsers check on every visit), so edits show at once.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
