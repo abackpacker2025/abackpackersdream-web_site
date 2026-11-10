@@ -1,6 +1,6 @@
 # abackpackersdream.com.au (the live website)
 
-Static site, uploaded by hand to Crazy Domains (cPanel › File Manager › `public_html`). Nothing deploys on push: after a merge, send the owner a zip of the changed files (same folder layout) and the upload steps. The owner backs up `public_html` first. The other site repo (`imakshat96/abackpackersdream-site`) is an old copy; don't edit it.
+Static site. **Moving to Netlify** (owner, 10 Nov 2026): once the domain points there, every merge to `main` goes live by itself (`netlify.toml` has the redirects and caching that `.htaccess` had), and every PR gets a preview link. Until the switch, it's still uploaded by hand to Crazy Domains (cPanel › File Manager › `public_html`): after a merge, send the owner a zip of the changed files (same folder layout); they back up `public_html` first. The domain, its DNS and the `admin@` mailbox stay at Crazy Domains (the mailbox comes with the hosting plan, so don't cancel hosting until email has moved). The other site repo (`imakshat96/abackpackersdream-site`) is an old copy; don't edit it.
 
 ## The legal pages and the site must match the apps
 
