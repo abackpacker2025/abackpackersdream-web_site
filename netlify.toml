@@ -1,6 +1,6 @@
 # Netlify hosting (owner, 10 Nov 2026: replaces uploading to Crazy Domains' File Manager).
 # Static site, no build: every merge to main goes live. Does what .htaccess did on Apache:
-# www -> bare domain, the trailing slash on the legal pages, and caching. Netlify makes
+# www -> bare domain and caching (Pretty URLs add the trailing slash to folder pages). Netlify makes
 # http -> https itself once the certificate is issued.
 
 [build]
@@ -20,30 +20,9 @@
   status = 301
   force = true
 
-# The legal pages are folders; add the trailing slash in one 301 (as .htaccess did).
-[[redirects]]
-  from = "/privacy-policy"
-  to = "/privacy-policy/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/terms"
-  to = "/terms/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/privacy-policy/:role"
-  to = "/privacy-policy/:role/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/terms-condition/:role"
-  to = "/terms-condition/:role/"
-  status = 301
-  force = true
+# No trailing-slash rules for the legal pages (/terms, /privacy-policy, ...): Netlify matches
+# redirects with or without the trailing slash, so "/terms -> /terms/" sent /terms/ to itself
+# in a loop. Netlify's Pretty URLs already add the slash to folder pages.
 
 # Repo files that aren't part of the site: not served.
 [[redirects]]
