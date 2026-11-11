@@ -24,7 +24,7 @@
 ## How it works for businesses (Backpacker Hire)
 
 - [Backpacker Hire](https://abackpackersdream.com.au/hire.html): For employers and hosts. Post jobs and rooms, and see who has applied. Free to download, with one login for the website and the app.
-- [Backpacker Hire pricing and plans](https://abackpackersdream.com.au/pricing.html): Plans for employers and hosts. Free (up to 2 live jobs) and Basic (A$29 a month ex GST: unlimited jobs and a photo gallery). Growth and Pro are coming soon.
+- [Backpacker Hire pricing and plans](https://abackpackersdream.com.au/pricing.html): Plans for employers and hosts. Free (up to 2 live jobs) and Basic (A$29 a month + GST, A$31.90 total: unlimited jobs and a photo gallery). Annual plans bought on the website have a 30-day refund. Growth and Pro are coming soon.
 - [Download Backpacker Hire on the App Store](https://apps.apple.com/app/id6752952428): Free to download on iOS.
 - [Download Backpacker Hire on Google Play](https://play.google.com/store/apps/details?id=com.backpacker.hire): Free to download on Android.
 - [Sign up to Backpacker Hire](https://api.abackpackersdream.com.au/business/signup): Create a Backpacker Hire account on the web.
