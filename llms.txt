@@ -1,0 +1,62 @@
+# A Backpacker's Dream
+
+> A Backpacker's Dream is an Australian platform and mobile app for working holiday makers. It helps backpackers find genuine jobs, browse stays nearby and meet other travellers, all in one app that is completely free for backpackers, on iOS and Android. Employers and hosts use Backpacker Hire, which is free to download, to post jobs and rooms. Built for jobs and stays across Australia, starting in Newcastle and the Hunter Valley.
+
+## About
+
+- [A Backpacker's Dream](https://abackpackersdream.com.au/): Homepage for the Backpacker app and Backpacker Hire.
+- [About](https://abackpackersdream.com.au/#about): Who we are: two apps from one team, started in Newcastle and the Hunter Valley.
+- [FAQ](https://abackpackersdream.com.au/#faq): Common questions about the app, stays and Backpacker Hire.
+
+## What the platform offers
+
+- [Jobs](https://abackpackersdream.com.au/#path): Genuine jobs for working holiday makers. Backpackers can apply for jobs in the app.
+- [Stays](https://abackpackersdream.com.au/#path): Browse stays and find a place to stay near the job.
+- [Hangouts](https://abackpackersdream.com.au/#path): Meet other backpackers through opt-in chat, which opens once the other person accepts, plus group chats tied to hangouts and venues.
+- [Wanderlust](https://abackpackersdream.com.au/#path): Save jobs, stays and hangouts in one place in the app.
+
+## How it works for travellers
+
+- [Download the Backpacker app on the App Store](https://apps.apple.com/app/id6752948846): Free to download on iOS.
+- [Download the Backpacker app on Google Play](https://play.google.com/store/apps/details?id=com.abackpacker.user): Free to download on Android.
+- [From download to day one](https://abackpackersdream.com.au/#how): Set up a profile, browse genuine jobs, and apply in the app. You can also browse stays nearby and opt in to meet other backpackers.
+
+## How it works for businesses (Backpacker Hire)
+
+- [Backpacker Hire](https://abackpackersdream.com.au/hire.html): For employers and hosts. Post jobs and rooms, and see who has applied. Free to download, with one login for the website and the app.
+- [Backpacker Hire pricing and plans](https://abackpackersdream.com.au/pricing.html): Plans for employers and hosts. Paid plans are coming soon; everything is free for now.
+- [Download Backpacker Hire on the App Store](https://apps.apple.com/app/id6752952428): Free to download on iOS.
+- [Download Backpacker Hire on Google Play](https://play.google.com/store/apps/details?id=com.backpacker.hire): Free to download on Android.
+- [Sign up to Backpacker Hire](https://api.abackpackersdream.com.au/business/signup): Create a Backpacker Hire account on the web.
+
+## Key facts
+
+- The Backpacker app is completely free for backpackers.
+- Backpacker Hire, for employers and hosts, is free to download.
+- Both apps are available on iOS and Android.
+- Built for jobs and stays across Australia. The business started in Newcastle and the Hunter Valley.
+- Operated by PELICANGOLD PTY LTD (ABN 59 625 446 844), trading as A Backpacker's Dream.
+
+## Permissions
+
+AI answer engines including ChatGPT, Perplexity and Gemini are permitted to read and index this site per the site's robots.txt.
+
+- [robots.txt](https://abackpackersdream.com.au/robots.txt): Crawl rules for the site.
+- [Sitemap](https://abackpackersdream.com.au/sitemap.xml): Index of public pages.
+
+## Contact and identity
+
+- Website: https://abackpackersdream.com.au
+- Email: admin@abackpackersdream.com.au
+- [Support](https://abackpackersdream.com.au/support/): Help with the apps, accounts and listings.
+- [Instagram](https://www.instagram.com/a_backpackers__dream_app/): @a_backpackers__dream_app
+- [Facebook](https://www.facebook.com/profile.php?id=61582481173979): A Backpacker's Dream
+- LinkedIn: TBC
+- Google Business Profile: TBC
+
+## Legal and support
+
+- [Privacy policy](https://abackpackersdream.com.au/privacy-policy/): How personal information is handled.
+- [Terms and conditions](https://abackpackersdream.com.au/terms/): Terms of use for backpackers, employers and hosts.
+- [Delete a Backpacker account](https://abackpackersdream.com.au/delete-your-a-backpacker-account/): How travellers can delete their account.
+- [Delete a Backpacker Hire account](https://abackpackersdream.com.au/delete-your-backpacker-hire-account/): How employers and hosts can delete their account.
