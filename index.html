@@ -128,15 +128,15 @@
 
   /* ---------------- audience tabs: "I'm travelling" / "I'm hiring" ---------------- */
   .audience-tabs{position:absolute; z-index:3; top:96px; left:clamp(24px, 6vw, 96px); display:inline-flex; gap:4px; padding:5px; margin:0; border-radius:999px; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.3); backdrop-filter:blur(14px) saturate(160%); -webkit-backdrop-filter:blur(14px) saturate(160%); box-shadow:0 8px 24px -12px rgba(0,0,0,0.45);}
-  .audience-tabs button{min-height:44px; padding:0 20px; border:0; border-radius:999px; background:transparent; color:#fff; font-family:var(--font-body); font-size:0.95rem; font-weight:600; cursor:pointer; transition:background 220ms ease, color 220ms ease;}
-  .audience-tabs button:hover{background:rgba(255,255,255,0.12);}
-  .audience-tabs button[aria-selected="true"]{background:#fff; color:var(--ink);}
+  .audience-tabs a, .audience-tabs span{display:inline-flex; align-items:center; text-decoration:none; min-height:44px; padding:0 20px; border:0; border-radius:999px; background:transparent; color:#fff; font-family:var(--font-body); font-size:0.95rem; font-weight:600; cursor:pointer; transition:background 220ms ease, color 220ms ease;}
+  .audience-tabs a:hover{background:rgba(255,255,255,0.12);}
+  .audience-tabs .aud-on{background:#fff; color:var(--ink);}
   /* Desktop: the tabs sit just above the text and both panels share one spot,
      so the tabs stay put when switching. Phones keep the tabs pinned under the header. */
   @media (min-width:861px){
     .hero-content{padding-top:120px;}
     .audience-tabs{position:relative; top:auto; left:auto; margin:0 0 30px; padding:6px;}
-    .audience-tabs button{min-height:54px; padding:0 30px; font-size:1.05rem;}
+    .audience-tabs a, .audience-tabs span{display:inline-flex; align-items:center; text-decoration:none; min-height:54px; padding:0 30px; font-size:1.05rem;}
     .hero-panels{display:grid;}
     .hero-panel{grid-area:1 / 1;}
     .hero-panel[hidden]{display:block; visibility:hidden;}
@@ -188,7 +188,7 @@
     .hire-band{height:20%;}
   }
   @media (prefers-reduced-motion: reduce){
-    .hero-slides, .hero-hire-bg, .hero-hire-art, .audience-tabs button{transition:none !important;}
+    .hero-slides, .hero-hire-bg, .hero-hire-art, .audience-tabs a{transition:none !important;}
     .hero-panel.is-entering{animation:none;}
   }
   .hero-sub{font-size:clamp(1.02rem, 1.4vw, 1.2rem); color:rgba(255,255,255,0.9); max-width:480px; margin:0 0 32px; line-height:1.55; font-weight:400;}
@@ -199,11 +199,14 @@
   .hero .pin{display:none;}
   @media (min-width:860px){ .hero .pin{display:block;} }
 
-  #path, #hire, #footer{scroll-margin-top:84px;}
+  #path, #open, #faq, #footer{scroll-margin-top:84px;}
 
   /* ---------------- section headers ---------------- */
   .section{padding:104px 0; position:relative;}
   .section-head{max-width:640px; margin:0 0 60px; position:relative; z-index:2;}
+  /* a heading block that is also the .wrap: same edges as every other section, text kept to 640px */
+  .wrap.section-head{max-width:var(--maxw); margin:0 auto 60px;}
+  .wrap.section-head > *{max-width:640px;}
   .kicker{font-family:var(--font-body); font-size:0.8rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--meadow-deep); margin:0 0 14px;}
   .accent-pop{color:var(--terracotta);}
   .section-head h2{font-size:clamp(2.1rem,4.4vw,3.4rem); line-height:0.96; text-transform:uppercase; letter-spacing:-0.01em; margin:0 0 16px;}
@@ -369,6 +372,25 @@
   @media (prefers-reduced-motion: reduce){ .to-top{transition:none;} }
 /* Hide Netlify's free-tier "Powered by Netlify" badge */
 #nl-badge-frame { display: none !important; }
+
+  /* headings: one style, the italic serif from the hero (owner, 16 Nov) */
+  .section-head h2{font-family:var(--font-serif); font-style:italic; font-weight:400; text-transform:none; letter-spacing:0; line-height:1.04; font-size:clamp(2.4rem,4.8vw,3.8rem);}
+  /* where we're open */
+  .open-section{background:var(--cream-raised);}
+  .open-list{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:16px;}
+  .open-list li{display:flex; flex-direction:column; gap:6px; padding:22px 22px 20px; border-radius:20px; background:var(--cream); border:1px solid rgba(22,38,27,0.1);}
+  .open-list li.has-jobs{background:var(--ink); color:var(--cream); border-color:var(--ink);}
+  .open-name{font-family:var(--font-serif); font-style:italic; font-size:1.6rem; line-height:1.1;}
+  .open-tag{font-size:0.78rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--meadow-deep);}
+  .open-list li.has-jobs .open-tag{color:var(--meadow);}
+  @media (max-width:960px){ .open-list{grid-template-columns:repeat(2, minmax(0,1fr));} }
+  /* for businesses: one slim band */
+  .biz-band{background:var(--cream); padding:0 0 88px;}
+  .biz-band-inner{display:flex; align-items:center; gap:20px; padding:22px 26px; border-radius:24px; background:var(--ink); color:var(--cream);}
+  .biz-band-inner img{width:52px; height:52px; border-radius:50%; flex-shrink:0;}
+  .biz-band-inner p{margin:0; flex:1; font-size:1.05rem; line-height:1.45;}
+  .biz-band-inner .btn{background:var(--terracotta); color:#fff; white-space:nowrap;}
+  @media (max-width:700px){ .biz-band-inner{flex-direction:column; align-items:flex-start; text-align:left;} }
 </style>
 <script type="application/ld+json">
 {
@@ -467,14 +489,6 @@
       "@type": "Answer",
       "text": "We’re going national. Jobs are live in Newcastle and the Hunter. Stays and pubs are also live in Sydney, Melbourne, Byron Bay, the Gold Coast, the Sunshine Coast (Noosa to Caloundra), Airlie Beach and Cairns, and the rest of Australia opens area by area. Check the app for what’s live near you."
      }
-    },
-    {
-     "@type": "Question",
-     "name": "I run a business — is it free to list?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Backpacker Hire is free to download. Plans, if you want one, are in-app purchases or bought through Stripe on the website. A promo code works only on the channel and conditions stated with it."
-     }
     }
    ]
   }
@@ -492,7 +506,6 @@
     <img width="1600" height="1066" class="hero-slide" data-src="img/hero-twelve-apostles.webp" alt="The Twelve Apostles rock stacks on the Great Ocean Road at sunrise" />
     <img width="1600" height="898" class="hero-slide" data-src="img/hero-surfers-sunset-walk.webp" alt="Two surfers walking along the beach at sunset with boards under their arms" />
   </div>
-  <div class="hero-hire-bg" aria-hidden="true"><span class="hire-sun"></span><span class="hire-band"></span></div>
   <div class="hero-topshade" aria-hidden="true"></div>
 
   <header class="nav">
@@ -500,32 +513,24 @@
       <div class="brand"><img width="192" height="220" class="logo-mark" src="img/logo.png" alt="A Backpacker's Dream logo" /><span class="brand-name">A Backpacker's Dream</span></div>
       <nav class="links">
         <a href="#path">The Journey</a>
-        <a href="hire.html">Backpacker Hire</a>
-        <a href="pricing.html">Pricing</a>
+        <a href="#open">Where we're open</a>
+        <a href="#faq">FAQ</a>
+        <a href="hire.html">For businesses</a>
       </nav>
       <div class="nav-cta">
-        <a class="nav-login" href="https://api.abackpackersdream.com.au/business/login" aria-label="Employer log in">Log in</a>
-        <a class="btn btn-ghost" href="https://api.abackpackersdream.com.au/business/signup" aria-label="Employer sign up">Sign up</a>
         <a class="btn btn-primary js-app-cta" href="https://apps.apple.com/app/id6752948846" target="_blank" rel="noopener"><span class="full-label">Download Backpacker</span><span class="short-label">Get app</span></a>
       </div>
     </div>
   </header>
 
-  <div class="hero-hire-art" aria-hidden="true">
-    <div class="hire-phone p-left"><img src="img/hire-screen-photos.webp" alt="Backpacker Hire Photos screen with a farm's cover photo and gallery" width="780" height="1688" loading="lazy" /></div>
-    <div class="hire-phone p-right"><img src="img/hire-screen-applicants.webp" alt="Backpacker Hire applicants screen for a Blueberry Picker job" width="780" height="1688" loading="lazy" /></div>
-    <div class="hire-phone p-main"><img src="img/hire-screen-newjob.webp" alt="Backpacker Hire New Job form for a Blueberry Picker" width="780" height="1688" loading="lazy" /></div>
-    <div class="hire-toast"><span class="av">L</span><span><b>Lukas M. applied</b><span class="sub">Blueberry Picker</span></span></div>
-  </div>
-
   <div class="hero-content">
-    <div class="audience-tabs" role="tablist" aria-label="Who is this for">
-      <button type="button" role="tab" id="tab-travel" aria-controls="panel-travel" aria-selected="true" tabindex="0">I'm travelling</button>
-      <button type="button" role="tab" id="tab-hire" aria-controls="panel-hire" aria-selected="false" tabindex="-1">I'm hiring</button>
-    </div>
+    <nav class="audience-tabs" aria-label="Who is this for">
+      <span class="aud-on" aria-current="page">I'm travelling</span>
+      <a href="hire.html">I'm hiring</a>
+    </nav>
 
     <div class="hero-panels">
-    <div class="hero-panel" id="panel-travel" role="tabpanel" aria-labelledby="tab-travel">
+    <div class="hero-panel" id="panel-travel">
       <div class="hero-eyebrow-row">
         <span class="hero-chip">New</span>
         <span class="hero-eyebrow eyebrow">Jobs · Stays · People, wherever you roam</span>
@@ -538,14 +543,6 @@
       </div>
     </div>
 
-    <div class="hero-panel" id="panel-hire" role="tabpanel" aria-labelledby="tab-hire" hidden>
-      <p class="hero-hire-kicker"><img width="156" height="155" src="img/backpacker-hire-icon.png" alt="Backpacker Hire logo" />Backpacker Hire · for businesses</p>
-      <h2 class="display">Need backpackers?<br/><span class="accent-hire">We've got you.</span></h2>
-      <p class="hero-sub">Post jobs, stays and events in minutes and reach backpackers already looking for work nearby. Post up to 2 jobs at a time for free.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-lg btn-hire" href="https://api.abackpackersdream.com.au/business/signup">Sign up free</a>
-        <a class="btn btn-lg btn-outline-white" href="https://api.abackpackersdream.com.au/business/login">Log in</a>
-      </div>
       <p class="hero-links"><a href="hire.html">How Backpacker Hire works &rarr;</a><a href="pricing.html">Pricing</a></p>
       <p class="hero-note">One login for the website and the Backpacker Hire app.</p>
     </div>
@@ -701,94 +698,23 @@
   </div>
 </section>
 
-<section class="hire" id="hire">
+<section class="open-section section" id="open">
   <div class="wrap">
-  <div class="hire-card">
-  <div class="hire-grid">
-    <div class="hire-copy">
-      <img width="397" height="171" class="hire-logo" src="img/backpacker-hire-logo.png" alt="Backpacker Hire logo" />
-      <p class="kicker eyebrow">For Employers</p>
-      <h2>Need backpackers?<br/><span class="accent-pop">We've got you.</span></h2>
-      <p>Backpacker Hire connects your business with backpackers already looking for work nearby &mdash; post a job, a room, or a local event in minutes.</p>
-      <ul class="hire-points">
-        <li><span class="dot"></span><span class="t"><strong>Post in minutes.</strong> Jobs, stays, or local events &mdash; live and visible fast.</span></li>
-        <li><span class="dot"></span><span class="t"><strong>Run it from one place.</strong> See who has applied and manage your own listings from one place.</span></li>
-      </ul>
-      <div class="hero-ctas">
-        <a class="btn btn-lg btn-primary" href="https://api.abackpackersdream.com.au/business/signup" aria-label="Sign up for Backpacker Hire">Sign up</a>
-        <a class="btn btn-lg btn-ghost" style="border-color:rgba(255,255,255,0.3); color:#fff;" href="https://apps.apple.com/app/id6752952428" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0;"><path d="M16.365 1.43c0 1.14-.42 2.07-1.26 2.94-.93.96-2.04 1.5-3.15 1.41-.06-1.08.45-2.19 1.26-3 .9-.93 2.1-1.5 3.15-1.35zM20.07 17.07c-.6 1.38-1.32 2.73-2.4 4.02-1.02 1.26-2.19 2.49-3.75 2.49-1.5 0-1.98-.96-3.72-.96-1.74 0-2.28.93-3.72.99-1.5.06-2.67-1.29-3.69-2.55-2.04-2.52-3.69-7.14-1.56-10.23 1.05-1.56 2.94-2.55 4.98-2.58 1.5-.03 2.4 1.02 3.63 1.02 1.2 0 1.89-1.02 3.72-1.02 1.56 0 2.97.72 3.9 1.86-1.68 1.02-2.46 2.4-2.43 4.2.03 2.1 1.5 3.6 3.24 4.26-.3.72-.6 1.41-1.2 2.5z"/></svg> Download on the App Store</a>
-        <a class="btn btn-lg btn-ghost" style="border-color:rgba(255,255,255,0.3); color:#fff;" href="https://play.google.com/store/apps/details?id=com.backpacker.hire" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0;"><path d="M4.3 2.3c-.3.3-.5.7-.5 1.2v17c0 .5.2.9.5 1.2l9.5-9.7-9.5-9.7z" fill="#00D2FF"/><path d="M17.6 10.2l-3.4-1.9-3.4 3.7 3.4 3.7 3.4-1.9c1-.6 1-2 0-2.6z" fill="#FFE000"/><path d="M4.3 2.3l9.5 9.7 3.4-3.7-11.6-6.6c-.4-.2-.9-.1-1.3.1z" fill="#00F076"/><path d="M4.3 21.7c.4.2.9.3 1.3.1l11.6-6.6-3.4-3.7-9.5 9.7z" fill="#FF3131"/></svg> Get it on Google Play</a>
-      </div>
-      <a href="hire.html" style="display:inline-block; margin-top:18px; font-weight:600; font-size:0.9rem; color:#fff; border-bottom:2px solid var(--terracotta); padding-bottom:2px;">See how Backpacker Hire works &amp; pricing &rarr;</a>
-    </div>
-    <div class="badge-cluster" aria-hidden="true">
-      <!-- pin: tent -->
-      <svg class="pin" viewBox="0 0 100 100" width="130" height="130" style="top:0%; left:20%; transform:rotate(-6deg); position:absolute;">
-        <circle cx="50" cy="50" r="46" fill="#f5efe3" stroke="#f5efe3" stroke-width="2"/>
-        <polygon points="50,24 82,80 18,80" fill="#c9703f"/>
-        <polygon points="50,24 50,80 18,80" fill="#a85a2e"/>
-        <rect x="44" y="70" width="12" height="10" fill="#16261b"/>
-      </svg>
-      <!-- pin: 4x4/van -->
-      <svg class="pin" viewBox="0 0 100 100" width="140" height="140" style="top:42%; left:0%; transform:rotate(5deg); position:absolute;">
-        <circle cx="50" cy="50" r="46" fill="#f5efe3" stroke="#f5efe3" stroke-width="2"/>
-        <rect x="18" y="46" width="56" height="18" rx="3" fill="#6f9db0"/>
-        <rect x="24" y="34" width="34" height="16" rx="3" fill="#6f9db0"/>
-        <circle cx="30" cy="66" r="7" fill="#16261b"/>
-        <circle cx="64" cy="66" r="7" fill="#16261b"/>
-      </svg>
-      <!-- pin: footprints -->
-      <svg class="pin" viewBox="0 0 100 100" width="110" height="110" style="top:18%; left:58%; transform:rotate(10deg); position:absolute;">
-        <circle cx="50" cy="50" r="46" fill="#f5efe3" stroke="#f5efe3" stroke-width="2"/>
-        <ellipse cx="40" cy="38" rx="7" ry="11" fill="#e8b84b" transform="rotate(-15 40 38)"/>
-        <ellipse cx="62" cy="58" rx="7" ry="11" fill="#e8b84b" transform="rotate(15 62 58)"/>
-      </svg>
-    </div>
-  </div>
-  </div>
-  </div>
-</section>
-
-<section class="about-section section" id="about">
-  <div class="wrap about-grid">
     <div class="section-head">
-      <p class="kicker">About</p>
-      <h2>Built in the Hunter Valley,<br/>for the regions.</h2>
-      <p>A Backpacker&rsquo;s Dream is two apps from one team: Backpacker, for travellers finding work, a bed, and people along their working holiday; and Backpacker Hire, for the local businesses who need them. We started in the Hunter Valley, and we&rsquo;re building this the way we&rsquo;d want it to work &mdash; for a backpacker turning up with a van and a visa, and for the farm, hostel, or pub trying to find good people fast. A PELICANGOLD PTY LTD project.</p>
+      <p class="kicker">Where we're open</p>
+      <h2>Live now, and <span class="accent-pop">growing</span>.</h2>
+      <p>Jobs are live in Newcastle and the Hunter. Stays and pubs are live in every place below, and the rest of Australia opens area by area.</p>
     </div>
-    <div class="about-apps">
-      <!-- pin: footprints -->
-      <svg class="pin" viewBox="0 0 100 100" width="92" height="92" aria-hidden="true">
-        <circle cx="50" cy="50" r="46" fill="#f5efe3" stroke="#d9d0bc" stroke-width="2"/>
-        <ellipse cx="40" cy="38" rx="7" ry="11" fill="#e8b84b" transform="rotate(-15 40 38)"/>
-        <ellipse cx="62" cy="58" rx="7" ry="11" fill="#e8b84b" transform="rotate(15 62 58)"/>
-      </svg>
-      <div class="app-card">
-        <img width="192" height="220" src="img/logo.png" alt="Backpacker app logo" />
-        <div>
-          <p class="for">For travellers</p>
-          <h3>Backpacker</h3>
-          <p class="desc">Find work, a bed, and your people along the way &mdash; free to download.</p>
-          <div class="app-links">
-            <a href="https://apps.apple.com/app/id6752948846" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0;"><path d="M16.365 1.43c0 1.14-.42 2.07-1.26 2.94-.93.96-2.04 1.5-3.15 1.41-.06-1.08.45-2.19 1.26-3 .9-.93 2.1-1.5 3.15-1.35zM20.07 17.07c-.6 1.38-1.32 2.73-2.4 4.02-1.02 1.26-2.19 2.49-3.75 2.49-1.5 0-1.98-.96-3.72-.96-1.74 0-2.28.93-3.72.99-1.5.06-2.67-1.29-3.69-2.55-2.04-2.52-3.69-7.14-1.56-10.23 1.05-1.56 2.94-2.55 4.98-2.58 1.5-.03 2.4 1.02 3.63 1.02 1.2 0 1.89-1.02 3.72-1.02 1.56 0 2.97.72 3.9 1.86-1.68 1.02-2.46 2.4-2.43 4.2.03 2.1 1.5 3.6 3.24 4.26-.3.72-.6 1.41-1.2 2.5z"/></svg> App Store</a>
-            <a href="https://play.google.com/store/apps/details?id=com.abackpacker.user" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0;"><path d="M4.3 2.3c-.3.3-.5.7-.5 1.2v17c0 .5.2.9.5 1.2l9.5-9.7-9.5-9.7z" fill="#00D2FF"/><path d="M17.6 10.2l-3.4-1.9-3.4 3.7 3.4 3.7 3.4-1.9c1-.6 1-2 0-2.6z" fill="#FFE000"/><path d="M4.3 2.3l9.5 9.7 3.4-3.7-11.6-6.6c-.4-.2-.9-.1-1.3.1z" fill="#00F076"/><path d="M4.3 21.7c.4.2.9.3 1.3.1l11.6-6.6-3.4-3.7-9.5 9.7z" fill="#FF3131"/></svg> Google Play</a>
-          </div>
-        </div>
-      </div>
-      <div class="app-card hire">
-        <img width="156" height="155" src="img/backpacker-hire-icon.png" alt="Backpacker Hire app icon" />
-        <div>
-          <p class="for">For businesses</p>
-          <h3>Backpacker Hire</h3>
-          <p class="desc">Post jobs, stays and events, and find good people fast.</p>
-          <div class="app-links">
-            <a class="more" href="hire.html">How it works &rarr;</a>
-            <a href="https://apps.apple.com/app/id6752952428" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0;"><path d="M16.365 1.43c0 1.14-.42 2.07-1.26 2.94-.93.96-2.04 1.5-3.15 1.41-.06-1.08.45-2.19 1.26-3 .9-.93 2.1-1.5 3.15-1.35zM20.07 17.07c-.6 1.38-1.32 2.73-2.4 4.02-1.02 1.26-2.19 2.49-3.75 2.49-1.5 0-1.98-.96-3.72-.96-1.74 0-2.28.93-3.72.99-1.5.06-2.67-1.29-3.69-2.55-2.04-2.52-3.69-7.14-1.56-10.23 1.05-1.56 2.94-2.55 4.98-2.58 1.5-.03 2.4 1.02 3.63 1.02 1.2 0 1.89-1.02 3.72-1.02 1.56 0 2.97.72 3.9 1.86-1.68 1.02-2.46 2.4-2.43 4.2.03 2.1 1.5 3.6 3.24 4.26-.3.72-.6 1.41-1.2 2.5z"/></svg> App Store</a>
-            <a href="https://play.google.com/store/apps/details?id=com.backpacker.hire" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0;"><path d="M4.3 2.3c-.3.3-.5.7-.5 1.2v17c0 .5.2.9.5 1.2l9.5-9.7-9.5-9.7z" fill="#00D2FF"/><path d="M17.6 10.2l-3.4-1.9-3.4 3.7 3.4 3.7 3.4-1.9c1-.6 1-2 0-2.6z" fill="#FFE000"/><path d="M4.3 2.3l9.5 9.7 3.4-3.7-11.6-6.6c-.4-.2-.9-.1-1.3.1z" fill="#00F076"/><path d="M4.3 21.7c.4.2.9.3 1.3.1l11.6-6.6-3.4-3.7-9.5 9.7z" fill="#FF3131"/></svg> Google Play</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ul class="open-list">
+      <li class="has-jobs"><span class="open-name">Newcastle &amp; the Hunter</span><span class="open-tag">Jobs · Stays · Pubs</span></li>
+      <li><span class="open-name">Sydney</span><span class="open-tag">Stays · Pubs</span></li>
+      <li><span class="open-name">Melbourne</span><span class="open-tag">Stays · Pubs</span></li>
+      <li><span class="open-name">Byron Bay</span><span class="open-tag">Stays · Pubs</span></li>
+      <li><span class="open-name">Gold Coast</span><span class="open-tag">Stays · Pubs</span></li>
+      <li><span class="open-name">Sunshine Coast &amp; Noosa</span><span class="open-tag">Stays · Pubs</span></li>
+      <li><span class="open-name">Airlie Beach</span><span class="open-tag">Stays · Pubs</span></li>
+      <li><span class="open-name">Cairns</span><span class="open-tag">Stays · Pubs</span></li>
+    </ul>
   </div>
 </section>
 
@@ -823,11 +749,15 @@
         <summary>Where does the app work?<span class="faq-icon" aria-hidden="true"></span></summary>
         <p>We&rsquo;re going national. Jobs are live in Newcastle and the Hunter. Stays and pubs are also live in Sydney, Melbourne, Byron Bay, the Gold Coast, the Sunshine Coast (Noosa to Caloundra), Airlie Beach and Cairns, and the rest of Australia opens area by area. Check the app for what&rsquo;s live near you.</p>
       </details>
-      <details class="faq-item">
-        <summary>I run a business &mdash; is it free to list?<span class="faq-icon" aria-hidden="true"></span></summary>
-        <p>Backpacker Hire is free to download. Plans, if you want one, are in-app purchases or bought through Stripe on the website. A promo code works only on the channel and conditions stated with it.</p>
-      </details>
     </div>
+  </div>
+</section>
+
+<section class="biz-band" aria-label="For businesses">
+  <div class="wrap biz-band-inner">
+    <img width="156" height="155" src="img/backpacker-hire-icon.png" alt="" />
+    <p><strong>Run a hostel, pub, farm or caf&eacute;?</strong> Post jobs and stays in Backpacker Hire.</p>
+    <a class="btn btn-lg btn-primary" href="hire.html">Backpacker Hire &rarr;</a>
   </div>
 </section>
 
@@ -842,7 +772,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <div class="brand"><img width="192" height="220" class="logo-mark" src="img/logo.png" alt="A Backpacker's Dream logo" />A Backpacker's Dream</div>
-        <p>Jobs, stays, and people for your working holiday in Australia — built for backpackers, and the businesses who hire them.</p>
+        <p>Jobs, stays, and people for your working holiday in Australia — built for backpackers, and the businesses who hire them. Built in the Hunter Valley.</p>
       </div>
       <div class="footer-col">
         <h4>Backpacker</h4>
@@ -850,11 +780,11 @@
       </div>
       <div class="footer-col">
         <h4><img width="156" height="155" class="hire-icon" src="img/backpacker-hire-icon.png" alt="Backpacker Hire logo" />Backpacker Hire</h4>
-        <ul><li><a href="hire.html">I'm hiring</a></li><li><a href="https://api.abackpackersdream.com.au/business/login">Log in</a></li><li><a href="https://api.abackpackersdream.com.au/business/signup">Sign up</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="#hire">Post a job</a></li><li><a href="#hire">List accommodation</a></li><li><a href="#hire">Promote an event</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms/">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-backpacker-hire-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
+        <ul><li><a href="hire.html">I'm hiring</a></li><li><a href="https://api.abackpackersdream.com.au/business/login">Log in</a></li><li><a href="https://api.abackpackersdream.com.au/business/signup">Sign up</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="hire.html">Post a job</a></li><li><a href="hire.html">List accommodation</a></li><li><a href="hire.html">Promote an event</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms/">Terms</a></li><li><a href="https://abackpackersdream.com.au/delete-your-backpacker-hire-account/" target="_blank" rel="noopener">Delete account</a></li></ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
-        <ul><li><a href="#about">About</a></li><li><a href="#faq">FAQ</a></li><li><a href="mailto:admin@abackpackersdream.com.au">Contact</a></li><li><a href="/support/">Support</a></li><li><a href="/credits/">Credits</a></li><li class="social-links"><a class="social-icon" href="https://www.instagram.com/a_backpackers__dream_app/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a><a class="social-icon" href="https://www.facebook.com/profile.php?id=61582481173979" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M14.1 8.4h-1.4c-.85 0-1.5.7-1.5 1.55V12h2.9l-.4 2.1h-2.5V21" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li></ul>
+        <ul><li><a href="#faq">FAQ</a></li><li><a href="mailto:admin@abackpackersdream.com.au">Contact</a></li><li><a href="/support/">Support</a></li><li><a href="/credits/">Credits</a></li><li class="social-links"><a class="social-icon" href="https://www.instagram.com/a_backpackers__dream_app/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a><a class="social-icon" href="https://www.facebook.com/profile.php?id=61582481173979" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M14.1 8.4h-1.4c-.85 0-1.5.7-1.5 1.55V12h2.9l-.4 2.1h-2.5V21" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li></ul>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1084,68 +1014,12 @@
 
 <script>
 (function(){
-  // Hero audience tabs ("I'm travelling" / "I'm hiring") and the header download button.
-  // The download button opens the store for this device: App Store on iPhone/iPad,
-  // Google Play on Android, App Store on a computer. On the hiring tab it points at
-  // the Backpacker Hire app instead of the Backpacker app.
-  var STORES = {
-    travel: { ios: 'https://apps.apple.com/app/id6752948846', android: 'https://play.google.com/store/apps/details?id=com.abackpacker.user', label: 'Download Backpacker' },
-    hire: { ios: 'https://apps.apple.com/app/id6752952428', android: 'https://play.google.com/store/apps/details?id=com.backpacker.hire', label: 'Get Backpacker Hire' }
-  };
-  var ua = navigator.userAgent || '';
-  var isIOS = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
-  var isAndroid = /Android/.test(ua);
-  function storeFor(audience){ var s = STORES[audience]; return isAndroid ? s.android : s.ios; }
-
-  var hero = document.querySelector('.hero');
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.audience-tabs [role="tab"]'));
+  // Old business links (index.html#hiring, ?for=hiring) now go to the Backpacker Hire page.
+  if (location.hash === '#hiring' || /(^|[?&])for=hiring(&|$)/.test(location.search)) { location.replace('hire.html'); return; }
+  // The header download button opens the store for this device: Google Play on Android,
+  // the App Store on iPhone, iPad and computers.
   var cta = document.querySelector('.nav-cta .js-app-cta');
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function setAudience(audience, opts){
-    opts = opts || {};
-    hero.setAttribute('data-audience', audience);
-    tabs.forEach(function(tab){
-      var on = tab.id === (audience === 'hire' ? 'tab-hire' : 'tab-travel');
-      tab.setAttribute('aria-selected', on ? 'true' : 'false');
-      tab.tabIndex = on ? 0 : -1;
-      var panel = document.getElementById(tab.getAttribute('aria-controls'));
-      if (on && panel.hidden && !reduceMotion){
-        panel.classList.remove('is-entering'); void panel.offsetWidth; panel.classList.add('is-entering');
-      }
-      panel.hidden = !on;
-      if (on && opts.focus) tab.focus();
-    });
-    if (cta){
-      cta.setAttribute('href', storeFor(audience));
-      var full = cta.querySelector('.full-label');
-      if (full) full.textContent = STORES[audience].label;
-    }
-    if (opts.updateUrl && window.history && history.replaceState){
-      history.replaceState(null, '', audience === 'hire' ? '#hiring' : location.pathname + location.search);
-    }
-  }
-
-  tabs.forEach(function(tab, i){
-    tab.addEventListener('click', function(){ setAudience(tab.id === 'tab-hire' ? 'hire' : 'travel', { updateUrl: true }); });
-    tab.addEventListener('keydown', function(e){
-      var next = null;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % tabs.length];
-      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + tabs.length) % tabs.length];
-      else if (e.key === 'Home') next = tabs[0];
-      else if (e.key === 'End') next = tabs[tabs.length - 1];
-      if (!next) return;
-      e.preventDefault();
-      setAudience(next.id === 'tab-hire' ? 'hire' : 'travel', { updateUrl: true, focus: true });
-    });
-  });
-
-  // index.html#hiring or index.html?for=hiring opens straight on the hiring tab (for business ads and links)
-  function fromUrl(){ return location.hash === '#hiring' || /(^|[?&])for=hiring(&|$)/.test(location.search) ? 'hire' : 'travel'; }
-  setAudience(fromUrl());
-  window.addEventListener('hashchange', function(){
-    if (location.hash === '#hiring'){ setAudience('hire'); hero.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' }); }
-  });
+  if (cta && /Android/.test(navigator.userAgent || '')) cta.setAttribute('href', 'https://play.google.com/store/apps/details?id=com.abackpacker.user');
 })();
 </script>
 
