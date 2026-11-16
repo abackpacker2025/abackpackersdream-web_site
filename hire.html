@@ -254,7 +254,9 @@
   body{background:var(--bg); color:var(--ink);}
   h1,h2,h3{letter-spacing:-0.005em;}
   .hero h1, .head h1{font-family:var(--font-serif); font-style:italic; font-weight:400; letter-spacing:0; line-height:1.02;}
-  .flow-head h2, .step-copy h3, .account-card h2, .cta h2, .pay h2{font-family:var(--font-display); text-transform:uppercase; font-weight:700; letter-spacing:-0.01em; line-height:0.98;}
+  .step-copy h3{font-family:var(--font-display); text-transform:uppercase; font-weight:700; letter-spacing:-0.01em; line-height:0.98;}
+  /* section headings: the italic serif, as on the home page (owner, 16 Nov) */
+  .flow-head h2, .account-card h2, .cta h2, .pay h2, .faq h2{font-family:var(--font-serif); font-style:italic; text-transform:none; font-weight:400; letter-spacing:0; line-height:1.04;}
   .plan-name{font-family:var(--font-display); text-transform:uppercase; font-weight:700; letter-spacing:0;}
   .step-num, .plan-price .amt{font-family:var(--font-display); font-weight:700; letter-spacing:-0.01em;}
   .made-for span::before{background:var(--meadow);}
@@ -310,6 +312,12 @@
   @media (prefers-reduced-motion: reduce){ .to-top{transition:none;} }
 /* Hide Netlify's free-tier "Powered by Netlify" badge */
 #nl-badge-frame { display: none !important; }
+  .faq{padding:72px 0 96px;}
+  .faq h2{font-size:clamp(2.2rem,4.4vw,3.4rem); margin:0 0 24px;}
+  .faq-item{border-top:1px solid rgba(127,127,127,0.28); padding:18px 0;}
+  .faq-item:last-child{border-bottom:1px solid rgba(127,127,127,0.28);}
+  .faq-item summary{cursor:pointer; font-weight:600; font-size:1.05rem;}
+  .faq-item p{margin:12px 0 0; max-width:68ch; opacity:0.85;}
 </style>
 <script type="application/ld+json">
 {
@@ -768,6 +776,20 @@
           </span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <h2 id="faq-h">Good to know.</h2>
+      <details class="faq-item">
+        <summary>Is it free to list?</summary>
+        <p>Backpacker Hire is free to download. Plans, if you want one, are in-app purchases or bought through Stripe on the website. A promo code works only on the channel and conditions stated with it.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need the app, or can I use the website?</summary>
+        <p>Either. One login works for the website and the Backpacker Hire app.</p>
+      </details>
     </div>
   </section>
 
