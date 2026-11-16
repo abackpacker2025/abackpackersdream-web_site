@@ -117,6 +117,8 @@
   @media (max-width:760px){ .hero-slide-sydney{object-position:22% 50%;} }
   /* the big stack sits low in the photo: keep its foot in view on wide screens; centre it on phones */
   .hero-slide-apostles{object-position:50% 75%;}
+  /* Q1 tower, centre-right: keep it in frame on phones */
+  @media (max-width:760px){ .hero-slide-goldcoast{object-position:60% 50%;} }
   @media (max-width:760px){ .hero-slide-apostles{object-position:55% 75%;} }
   .hero-topshade{position:absolute; top:0; left:0; right:0; height:170px; z-index:2; background:linear-gradient(180deg, rgba(8,12,8,0.55) 0%, rgba(8,12,8,0) 100%); pointer-events:none;}
   .hero::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(14,20,10,0.05) 0%, rgba(14,20,10,0.18) 45%, rgba(10,14,8,0.72) 100%);}
@@ -505,7 +507,7 @@
   <div class="hero-slides">
     <img width="1600" height="1200" class="hero-slide active" src="img/hero-newcastle-nobbys.webp" fetchpriority="high" alt="Nobbys Head lighthouse above the beach and surf in Newcastle, NSW" />
     <img width="2000" height="1333" class="hero-slide hero-slide-sydney" data-src="img/hero-sydney-opera-house.webp" alt="Sydney Opera House and Harbour Bridge at sunset" />
-    <img width="1600" height="1067" class="hero-slide" data-src="img/hero-gold-coast.webp" alt="Surfers Paradise towers above the beach on the Gold Coast at sunset" />
+    <img width="2000" height="1125" class="hero-slide hero-slide-goldcoast" data-src="img/hero-gold-coast.webp" alt="The Gold Coast skyline lit up at dusk above the beach" />
     <img width="2000" height="1500" class="hero-slide hero-slide-apostles" data-src="img/hero-twelve-apostles.webp" alt="The Twelve Apostles and the cliffs of the Great Ocean Road at sunset" />
     <img width="1600" height="898" class="hero-slide" data-src="img/hero-surfers-sunset-walk.webp" alt="Two surfers walking along the beach at sunset with boards under their arms" />
   </div>
