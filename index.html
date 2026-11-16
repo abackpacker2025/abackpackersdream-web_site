@@ -113,8 +113,8 @@
   .hero-slide{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1400ms ease;}
   .hero-slide.active{opacity:1;}
   /* keep the Opera House clear of the hero text: right of it on wide screens, centred on phones */
-  .hero-slide-sydney{object-position:20% 50%;}
-  @media (max-width:760px){ .hero-slide-sydney{object-position:66% 50%;} }
+  .hero-slide-sydney{object-position:50% 50%;}
+  @media (max-width:760px){ .hero-slide-sydney{object-position:22% 50%;} }
   .hero-topshade{position:absolute; top:0; left:0; right:0; height:170px; z-index:2; background:linear-gradient(180deg, rgba(8,12,8,0.55) 0%, rgba(8,12,8,0) 100%); pointer-events:none;}
   .hero::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(14,20,10,0.05) 0%, rgba(14,20,10,0.18) 45%, rgba(10,14,8,0.72) 100%);}
   .hero-content{position:static; color:#fff; padding:160px clamp(24px, 6vw, 96px) 48px; width:100%;}
@@ -501,7 +501,7 @@
 <section class="hero" id="top" data-audience="travel">
   <div class="hero-slides">
     <img width="1600" height="1200" class="hero-slide active" src="img/hero-newcastle-nobbys.webp" fetchpriority="high" alt="Nobbys Head lighthouse above the beach and surf in Newcastle, NSW" />
-    <img width="1600" height="754" class="hero-slide hero-slide-sydney" data-src="img/hero-sydney-opera-house.webp" alt="Sydney Opera House lit up at dusk on the harbour" />
+    <img width="2000" height="1333" class="hero-slide hero-slide-sydney" data-src="img/hero-sydney-opera-house.webp" alt="Sydney Opera House and Harbour Bridge at sunset" />
     <img width="1600" height="1067" class="hero-slide" data-src="img/hero-gold-coast.webp" alt="Surfers Paradise towers above the beach on the Gold Coast at sunset" />
     <img width="1600" height="1066" class="hero-slide" data-src="img/hero-twelve-apostles.webp" alt="The Twelve Apostles rock stacks on the Great Ocean Road at sunrise" />
     <img width="1600" height="898" class="hero-slide" data-src="img/hero-surfers-sunset-walk.webp" alt="Two surfers walking along the beach at sunset with boards under their arms" />
