@@ -13,6 +13,7 @@
 - [Jobs](https://abackpackersdream.com.au/#path): Genuine jobs for working holiday makers. Backpackers can apply for jobs in the app.
 - [Stays](https://abackpackersdream.com.au/#path): Browse stays and find a place to stay near the job.
 - [Hangouts](https://abackpackersdream.com.au/#path): Meet other backpackers through opt-in chat, which opens once the other person accepts, plus group chats tied to hangouts and venues.
+- [88 days postcode checker](https://abackpackersdream.com.au/88-days/): Type a postcode to see which work may count as specified work for a 2nd or 3rd year Working Holiday (417) or Work and Holiday (462) visa, from the Home Affairs lists, plus open jobs that may count. General information, not migration advice.
 - [Wanderlust](https://abackpackersdream.com.au/#path): Save jobs, stays and hangouts in one place in the app.
 
 ## How it works for travellers
