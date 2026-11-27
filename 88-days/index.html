@@ -110,8 +110,6 @@
   .work-table tr.counts td:first-child{font-weight:600; color:var(--ink);}
 
   .d88-section{margin-top:64px;}
-  .near{margin-top:26px; padding-top:22px; border-top:1px solid var(--line);}
-  .near h3{font-family:var(--font-display); font-weight:700; text-transform:uppercase; font-size:1.15rem; letter-spacing:-0.01em; color:var(--ink); margin:0 0 12px;}
   .section-lede{color:var(--ink-soft); max-width:680px; margin:0 0 20px;}
   .jobs-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:14px;}
   .job-card{display:flex; flex-direction:column; gap:6px; padding:18px 18px 16px; border-radius:22px; background:#fff; border:1px solid var(--line); color:var(--ink); text-decoration:none; transition:border-color 160ms ease, transform 160ms cubic-bezier(.23,1,.32,1);}
@@ -410,8 +408,6 @@
       '<div class="result-head"><span class="pc">' + pc + '</span><span class="area-chip">' + esc(STATE_NAMES[st]) + '</span><span class="areas">' +
       areas.map(function (a) { return '<span class="area-chip">' + esc(AREA_WORDS[a]) + "</span>"; }).join("") + "</span></div>" + summary +
       '<div class="table-scroll"><table class="work-table"><thead><tr><th scope="col">Type of work</th><th scope="col" class="v">417</th><th scope="col" class="v">462</th></tr></thead><tbody>' + rows + "</tbody></table></div>";
-    result.insertAdjacentHTML("beforeend", '<div class="near" id="near"><h3>Jobs that may count near ' + pc + '</h3><div class="jobs-grid near-grid"><div class="skeleton"></div><div class="skeleton"></div></div></div>');
-    nearJobs(pc);
     try { history.replaceState(null, "", "?postcode=" + pc); } catch (e) {}
   }
 
@@ -421,62 +417,33 @@
   Array.prototype.forEach.call(document.querySelectorAll("[data-pc]"), function (b) {
     b.addEventListener("click", function () { input.value = b.getAttribute("data-pc"); show(input.value); });
   });
+  var start = new URLSearchParams(location.search).get("postcode");
+  if (start) { input.value = start; show(start); }
 
   // Live jobs that may count (Web GET /api/site/regional-jobs).
-  var API = "https://api.abackpackersdream.com.au/api/site/regional-jobs";
-  function cards(jobs, medium) {
-    return jobs.map(function (j) {
-      var visas = [j.v417 ? "417" : "", j.v462 ? "462" : ""].filter(Boolean).join(" and ");
-      var place = [j.business, [j.town, j.postcode].filter(Boolean).join(" ")].filter(Boolean).join(" · ");
-      return '<a class="job-card" href="/download/?utm_source=88days&amp;utm_medium=' + medium + '">' +
-        '<span class="badge">✓ May count for 88 days</span>' +
-        '<span class="t">' + esc(j.name) + "</span>" +
-        '<span class="m">' + esc(place) + "</span>" +
-        '<span class="m">For ' + esc(visas) + " visas</span>" +
-        '<span class="row"><span class="pay">' + esc(j.pay) + '</span><span class="open">Open in the app ›</span></span></a>';
-    }).join("");
-  }
-  var nearAsked = "";
-  function nearJobs(pc) {
-    nearAsked = pc;
-    fetch(API + "?postcode=" + pc, { mode: "cors" })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function (data) {
-        if (nearAsked !== pc) return; // another postcode was checked meanwhile
-        var box = document.getElementById("near");
-        if (!box) return;
-        var jobs = (data && data.jobs) || [];
-        var grid = box.querySelector(".near-grid");
-        if (!jobs.length) {
-          grid.outerHTML = '<p class="jobs-note">No open jobs that may count within ' + ((data && data.nearKm) || 80) + " km yet. New ones show here as businesses post them.</p>";
-          return;
-        }
-        grid.innerHTML = cards(jobs.slice(0, 6), "near");
-        if (data.total > 6) box.insertAdjacentHTML("beforeend", '<p class="jobs-note">' + data.total + ' jobs that may count within ' + data.nearKm + ' km. <a href="/download/?utm_source=88days&amp;utm_medium=near">See them all in the app</a>.</p>');
-      })
-      .catch(function () {
-        var box = document.getElementById("near");
-        if (box && nearAsked === pc) box.remove();
-      });
-  }
-
   var jobsEl = document.getElementById("jobs"), note = document.getElementById("jobs-note");
   function noJobs(text) {
     jobsEl.innerHTML = "";
     note.innerHTML = text + ' <a href="/download/?utm_source=88days&amp;utm_medium=jobs">Get the app</a> and filter the Jobs tab by “May count for 88 days”.';
   }
-  fetch(API, { mode: "cors" })
+  fetch("https://api.abackpackersdream.com.au/api/site/regional-jobs", { mode: "cors" })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (data) {
       var jobs = (data && data.jobs) || [];
       if (!jobs.length) return noJobs("New jobs that may count show here as businesses post them.");
-      jobsEl.innerHTML = cards(jobs, "job");
+      jobsEl.innerHTML = jobs.map(function (j) {
+        var visas = [j.v417 ? "417" : "", j.v462 ? "462" : ""].filter(Boolean).join(" and ");
+        var place = [j.business, [j.town, j.postcode].filter(Boolean).join(" ")].filter(Boolean).join(" · ");
+        return '<a class="job-card" href="/download/?utm_source=88days&amp;utm_medium=job">' +
+          '<span class="badge">✓ May count for 88 days</span>' +
+          '<span class="t">' + esc(j.name) + "</span>" +
+          '<span class="m">' + esc(place) + "</span>" +
+          '<span class="m">For ' + esc(visas) + " visas</span>" +
+          '<span class="row"><span class="pay">' + esc(j.pay) + '</span><span class="open">Open in the app ›</span></span></a>';
+      }).join("");
       note.textContent = data.total > jobs.length ? "Showing the newest " + jobs.length + " of " + data.total + ". See them all in the app." : "";
     })
     .catch(function () { noJobs("Jobs that may count are in the app."); });
-
-  var start = new URLSearchParams(location.search).get("postcode");
-  if (start) { input.value = start; show(start); }
 })();
 </script>
 </body>
