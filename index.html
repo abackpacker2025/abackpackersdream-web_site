@@ -134,6 +134,8 @@
   .hero-panel{position:relative; z-index:2;}
   .hero-eyebrow-row{display:flex; align-items:center; gap:10px; margin-bottom:28px; flex-wrap:wrap;}
   .hero-chip{display:inline-flex; align-items:center; color:var(--ink); font-family:var(--font-body); font-weight:700; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:6px 13px; border-radius:999px; background:var(--cream-raised);}
+  .hero-banner{padding-right:18px; text-decoration:none; font-family:var(--font-body); font-weight:600; font-size:0.92rem; letter-spacing:0; text-transform:none; transition:background 200ms ease;}
+  .hero-banner:hover{background:rgba(255,255,255,0.18); color:#fff;}
   .hero-eyebrow{display:inline-flex; align-items:center; gap:8px; color:#fff; opacity:0.92; padding:7px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:999px; background:rgba(255,255,255,0.08); margin:0;}
   .display{font-family:var(--font-serif); font-style:italic; font-size:clamp(2.6rem, 5.4vw, 4.6rem); line-height:1.04; letter-spacing:0; font-weight:400; text-transform:none; margin:0 0 20px; max-width:620px; color:#fff;}
   .display .accent{color:var(--meadow);}
@@ -556,7 +558,8 @@
     <div class="hero-panel" id="panel-travel">
       <div class="hero-eyebrow-row">
         <span class="hero-chip">New</span>
-        <span class="hero-eyebrow eyebrow">Jobs · Stays · People, wherever you roam</span>
+        <!-- 88 days banner (Owen, 28 Nov 2026). -->
+        <a class="hero-eyebrow hero-banner" href="/88-days/">Does it count for your 88 days? Type the postcode to check. <span aria-hidden="true">→</span></a>
       </div>
       <h1 class="display">Your working holiday,<br/><span class="accent">sorted.</span></h1>
       <p class="hero-sub"><strong>No sign-up, no details needed.</strong> Get started today. Jump in and have a look around: find jobs from Newcastle to Cairns, find a stay and contact the venue, and meet other travellers if you both opt in. One free app for your working holiday.</p>

@@ -197,7 +197,7 @@
     </section>
 
     <aside class="heads-up" aria-label="Rule change coming">
-      <p><strong>Heads-up:</strong> From 1 March 2027, a 2nd visa needs four months of specified work instead of three, and you'll need to register and be invited before you apply (UK passport holders exempt). Current rules still apply for now. <a href="https://immi.homeaffairs.gov.au/what-we-do/whm-program/latest-news" target="_blank" rel="noopener">Home Affairs news</a></p>
+      <p><strong>Heads up:</strong> from 1 March 2027, a 2nd visa needs four months of specified work instead of three, and you'll need to register and be invited before you apply (UK passport holders exempt). Registration opens 1 December 2026. Current rules still apply if you finish your specified work and lodge a valid application by 28 February 2027. <a href="https://immi.homeaffairs.gov.au/what-we-do/whm-program/latest-news" target="_blank" rel="noopener">Home Affairs news</a></p>
     </aside>
 
     <section class="d88-section" aria-labelledby="jobs-title">
@@ -231,8 +231,8 @@
             <tr><td>Tree farming and felling</td><td>Regional Australia</td><td>Northern Australia only</td></tr>
             <tr><td>Mining</td><td>Regional Australia</td><td>Doesn’t count</td></tr>
             <tr><td>Tourism and hospitality</td><td>Northern or Remote and Very Remote Australia</td><td>Northern or Remote and Very Remote Australia</td></tr>
-            <tr><td>Bushfire recovery</td><td>Bushfire declared areas</td><td>Bushfire declared areas</td></tr>
-            <tr><td>Flood, cyclone or storm recovery</td><td>Natural disaster declared areas</td><td>Natural disaster declared areas</td></tr>
+            <tr><td>Bushfire recovery (after 31 July 2019)</td><td>Bushfire declared areas</td><td>Bushfire declared areas</td></tr>
+            <tr><td>Flood, cyclone or storm recovery (from 31 December 2021)</td><td>Natural disaster declared areas</td><td>Natural disaster declared areas</td></tr>
           </tbody>
         </table>
       </div>
@@ -335,6 +335,9 @@
   if (!L) return;
   var AREA_WORDS = { remote: "Remote and Very Remote Australia", northern: "Northern Australia", regional: "Regional Australia", bushfire: "Bushfire declared area", disaster: "Natural disaster declared area" };
   var SHORT = { plant_animal: "farm", construction: "construction", fishing: "fishing", tree_farming: "tree farming", mining: "mining", tourism_hospitality: "hospitality", bushfire_recovery: "bushfire recovery", disaster_recovery: "disaster recovery" };
+  // When recovery work started counting (Home Affairs specified work pages; Owen, 28 Nov 2026).
+  var SINCE = { bushfire_recovery: " (after 31 July 2019)", disaster_recovery: " (from 31 December 2021)" };
+  var REC_DATED = { "bushfire recovery": "bushfire recovery work after 31 July 2019", "disaster recovery": "disaster recovery work after 31 December 2021" };
   var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   function day(iso) { var p = String(iso || "").split("-").map(Number); return p.length === 3 ? p[2] + " " + MONTHS[p[1] - 1] + " " + p[0] : iso; }
   document.getElementById("checked-date").textContent = day(L.checked);
@@ -394,18 +397,19 @@
       if (a) c417.push(SHORT[cat]);
       if (b) c462.push(SHORT[cat]);
       var tick = '<span class="yes-pill">✓ Yes</span>', dash = '<span class="no-dash" aria-label="No">—</span>';
-      rows += '<tr class="' + (a || b ? "counts" : "") + '"><td>' + esc(L.work[cat]) + '</td><td class="v">' + (a ? tick : dash) + '</td><td class="v">' + (b ? tick : dash) + "</td></tr>";
+      rows += '<tr class="' + (a || b ? "counts" : "") + '"><td>' + esc(L.work[cat] + (SINCE[cat] || "")) + '</td><td class="v">' + (a ? tick : dash) + '</td><td class="v">' + (b ? tick : dash) + "</td></tr>";
     });
     function regular(list_) { return list_.filter(function (w) { return w.indexOf("recovery") < 0; }); }
     var r417 = regular(c417), r462 = regular(c462);
     var rec = c417.filter(function (w) { return w.indexOf("recovery") >= 0; });
     function cap(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
-    var recText = rec.length ? cap(list(rec.map(function (w) { return w.replace(" recovery", ""); }))) + " recovery work may count too." : "";
+    var recDated = rec.length ? cap(list(rec.map(function (w) { return REC_DATED[w] || w + " work"; }))) : "";
+    var recText = recDated ? recDated + " may count too." : "";
     var summary;
     if (!c417.length && !c462.length) {
       summary = '<p class="summary">Postcode ' + pc + " isn’t on any of the lists, so work here doesn’t count towards a 2nd or 3rd year visa.</p>";
     } else if (!r417.length && !r462.length) {
-      summary = '<p class="summary">Farm, hospitality and other regular work here doesn’t count. Only ' + esc(list(rec.map(function (w) { return w.replace(" recovery", ""); }))) + " recovery work may count.</p>";
+      summary = '<p class="summary">Farm, hospitality and other regular work here doesn\'t count. ' + esc(recDated) + " may count.</p>";
     } else {
       var parts = [];
       if (r417.length) parts.push(cap(esc(list(r417))) + " work may count here for a 417");
