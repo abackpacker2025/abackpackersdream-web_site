@@ -110,6 +110,10 @@
   .work-table tr.counts td:first-child{font-weight:600; color:var(--ink);}
 
   .d88-section{margin-top:64px;}
+  .advice{margin-top:10px; font-size:0.88rem;}
+  .heads-up{margin-top:22px; background:#fff6e6; border:1px solid #f0d9a8; border-left:5px solid var(--sun, #e8b84b); border-radius:0 18px 18px 0; padding:16px 20px;}
+  .heads-up p{margin:0; color:var(--ink);}
+  .heads-up strong{color:var(--ink);}
   .section-lede{color:var(--ink-soft); max-width:680px; margin:0 0 20px;}
   .jobs-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:14px;}
   .job-card{display:flex; flex-direction:column; gap:6px; padding:18px 18px 16px; border-radius:22px; background:#fff; border:1px solid var(--line); color:var(--ink); text-decoration:none; transition:border-color 160ms ease, transform 160ms cubic-bezier(.23,1,.32,1);}
@@ -188,8 +192,13 @@
         <button type="submit">Check</button>
       </form>
       <p class="hint" id="pc-hint">Try <button type="button" data-pc="4870">4870 Cairns</button>, <button type="button" data-pc="2330">2330 Singleton</button>, <button type="button" data-pc="3500">3500 Mildura</button> or <button type="button" data-pc="2300">2300 Newcastle</button>.</p>
+      <p class="hint advice">General info, not migration advice. <a href="https://immi.homeaffairs.gov.au" target="_blank" rel="noopener">Check with Home Affairs</a>.</p>
       <div class="result" id="result" hidden aria-live="polite"></div>
     </section>
+
+    <aside class="heads-up" aria-label="Rule change coming">
+      <p><strong>Heads-up:</strong> From 1 March 2027, a 2nd visa needs four months of specified work instead of three, and you'll need to register and be invited before you apply (UK passport holders exempt). Current rules still apply for now. <a href="https://immi.homeaffairs.gov.au/what-we-do/whm-program/latest-news" target="_blank" rel="noopener">Home Affairs news</a></p>
+    </aside>
 
     <section class="d88-section" aria-labelledby="jobs-title">
       <h2 id="jobs-title">Jobs that may count</h2>
@@ -235,15 +244,15 @@
       <div class="faq-list">
         <details><summary>Does hospitality count for the 88 days?</summary><p>Only in Northern Australia and in Remote and Very Remote Australia, for both visas. Café, bar or hotel work in a regional city like Newcastle, Tamworth or Toowoomba doesn’t count. Airlie Beach, Cairns and Darwin do.</p></details>
         <details><summary>Do UK passport holders need to do 88 days?</summary><p>No. Home Affairs says UK passport holders who apply on or after 1 July 2024 don’t need specified work for a second or third Working Holiday (417) visa.</p></details>
-        <details><summary>Does a day of rain count?</summary><p>Only if you were paid for it. Paid public holidays and paid sick days count; unpaid days off for bad weather don’t. Start early so a wet season doesn’t leave you short.</p></details>
+        <details><summary>Does a day of rain count?</summary><p>Unpaid days off don't count, and that includes days lost to bad weather. Paid public holidays and paid sick days can count. Start early so a wet season doesn’t leave you short.</p></details>
         <details><summary>Can I work two jobs on the same day?</summary><p>A calendar day only counts once, even if you work two shifts or for two employers that day.</p></details>
-        <details><summary>How does the app know if a job may count?</summary><p>The business picks the type of work when it posts the job, and we check that against the job’s postcode and the Home Affairs lists. Jobs that may count show “✓ May count for 88 days”, and you can filter the Jobs tab to show only them.</p></details>
+        <details><summary>How does the app know if a job may count?</summary><p>The business picks the type of work when it posts the job, and we check that against the job’s postcode and the Home Affairs lists. From the next app update, jobs that may count show “✓ May count for 88 days”, and you can filter the Jobs tab to show only them.</p></details>
       </div>
     </section>
 
     <section class="cta-band" aria-label="Get the app">
       <img src="/img/logo.png" alt="" />
-      <p><strong>Find work that may count, near you.</strong>Free, no sign-up to look around. Filter the Jobs tab by “May count for 88 days”.</p>
+      <p><strong>Find work that may count, near you.</strong>Free, no sign-up to look around.</p>
       <div class="btns">
         <a class="btn btn-primary" href="/download/?utm_source=88days&amp;utm_medium=cta">Get the app</a>
         <a class="btn btn-cream" href="/hire.html">I’m hiring</a>
@@ -424,7 +433,7 @@
   var jobsEl = document.getElementById("jobs"), note = document.getElementById("jobs-note");
   function noJobs(text) {
     jobsEl.innerHTML = "";
-    note.innerHTML = text + ' <a href="/download/?utm_source=88days&amp;utm_medium=jobs">Get the app</a> and filter the Jobs tab by “May count for 88 days”.';
+    note.innerHTML = text + ' <a href="/download/?utm_source=88days&amp;utm_medium=jobs">Get the app</a> to see jobs near you.';
   }
   fetch("https://api.abackpackersdream.com.au/api/site/regional-jobs", { mode: "cors" })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
